@@ -1,0 +1,12 @@
+= simple_form_for @playlist, :html => {:class => 'form-horizontal'} do |f|
+
+  .well
+    = f.input :name
+    = f.input :kind_id, collection: kinds, selected: (@playlist.kind.id if @playlist.kind)
+    = f.input :image
+    = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+
+  .form_actions
+    = f.button :submit, :class => 'btn btn-default'
+    = link_to t('helpers.submit.cancel'), :back, :class => 'btn btn-default'
+

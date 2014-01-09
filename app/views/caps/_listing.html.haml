@@ -1,0 +1,31 @@
+- if caps.empty?
+  = t('cap.empty')
+
+- else
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th
+        %th= t('cap.name')
+        %th= t('cap.intensity')
+        %th= t('cap.price')
+        %th= t('cap.dimensions')
+        %th= t('cap.category')
+        %th
+    %tbody
+      - caps.each do |cap|
+        %tr
+          %td.img= image_tag cap.image_url(:thumb)
+          %td= cap.name
+          %td= cap.intensity
+          %td= cap.price
+          %td= cap.dimensions
+          %td= cap.category.decorate.name
+          %td
+            = link_to edit_cap_path(cap), :class => 'btn btn-default', :title => t('cap.edit') do
+              %span.fa.fa-edit
+            = link_to cap_path(cap), :class => 'btn btn-default', :title => t('cap.destroy'), method: :delete, data: { confirm: t('cap.confirm_destroy') } do
+              %span.fa.fa-times
+
+

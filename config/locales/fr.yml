@@ -1,0 +1,111 @@
+fr:
+  activerecord:
+    errors:
+      models: 
+        user:
+          attributes:
+            email:
+              taken: "Cet email est déjà pris."
+            password:
+              blank: "Veuillez renseigner le mot de passe"
+              too_short: "Le mot de passe est trop court"
+            password_confirmation:
+              confirmation: "Veuillez confirmer le mot de passe"
+  model:
+    users: "Utilisateur(s)"
+    kinds: "Genre musicaux"
+    playlists: "Playlists"
+  user:
+    new: "Créer un utilisateur"
+    create: "L'utilisateur %{name} a été créé avec succès."
+    edit: "Mettre à jour un utilisateur"
+    update: "L'utilisateur %{name} a été mis à jour avec succès."
+    destroy: "Supprimer cet utilisteur"
+    confirm_destroy: "Etes-vous sûr de vouloir supprimer cet utilisateur?"
+    destroyed: "L'utilisateur %{name} a été supprimé avec succès."
+    empty: "Aucun utilisateur"
+    last_name: "Nom de famille"
+    first_name: "Prénom"
+    name: "Nom"
+  kind:
+    new: "Créer un genre musical"
+    create: "Le genre musical %{name} a été créé avec succès."
+    edit: "Mettre à jour un genre musical"
+    update: "Le genre musical %{name} a été mis à jour avec succès."
+    destroy: "Supprimer ce genre musical"
+    confirm_destroy: "Etes-vous sûr de vouloir supprimer ce genre musical?"
+    destroyed: "Le genre musical %{name} a été supprimé avec succès."
+    empty: "Aucune genre musical"
+    name: "Nom"
+  playlist:
+    new: "Créer une playlist"
+    create: "La playlist %{name} a été créée avec succès."
+    edit: "Mettre à jour une playlist"
+    update: "La playlist %{name} a été mise à jour avec succès."
+    destroy: "Supprimer cette playlist"
+    confirm_destroy: "Etes-vous sûr de vouloir supprimer cette playlist?"
+    destroyed: "La playlist %{name} a été supprimée avec succès."
+    empty: "Aucune playlist"
+    name: "Nom"
+    kind: "Genre musical"
+    user: "Créateur"
+    image: "Vignette"
+    created_at: "Date de création"
+  views:
+    pagination:
+      first: "Premier"
+      last: "Dernier"
+      previous: "&lsaquo;&lsaquo;"
+      next: "&rsaquo;&rsaquo;"
+      truncate: "..."
+  titles:
+    edit: "Modifier"
+    reset: "Remettre à zéro"
+  helpers:
+    words:
+      yeslabel: "Oui"
+      nolabel: "Non"
+      none: "Aucun(e)"
+      all: "Tous"
+      results: "R&eacute;sultat(s)"
+      choose: "Choisir..."
+    submit:
+      create: "Créer"
+      update: "Mettre à jour"
+      cancel: "Annuler"
+      back: "Retour"
+  date:
+    order:
+      - :day
+      - :month
+      - :year
+  number:
+    currency:
+      format:
+        delimiter: " "
+        format: "%n %u"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "€"
+    format:
+      delimiter: " "
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+  datetime:
+    distance_in_words: 
+      x_months:
+        one: "Il y a un mois"
+        other: "Il y a %{count} mois"
+      about_x_months:
+        one: "Il y a un mois"
+        other: "Il y a % {count} mois"
+      x_days:
+        one: "Aujourd'hui"
+        other: "Il y a %{count} jours"
+      about_x_hours:
+        one: "Il y a une heure"
+        other: "Il y a %{count} heures"

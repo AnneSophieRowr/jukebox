@@ -1,0 +1,11 @@
+.bar-title
+  %h2.pull-left= t('model.playlists')
+  .btn-group.pull-right
+    = link_to new_playlist_path, :class => 'btn btn-default', :title => t('playlist.new') do
+      %span.fa.fa-plus
+
+#playlists.partial
+  = render :partial => 'listing', :locals => {:playlists => @playlists}
+
+
+

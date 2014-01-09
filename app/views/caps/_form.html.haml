@@ -1,0 +1,15 @@
+= simple_form_for @cap, :html => {:class => 'form-horizontal'} do |f|
+
+  .well
+    = f.input :name
+    = f.input :intensity, collection: (0..12), selected: (@cap.intensity if @cap.intensity), prompt: t('helpers.words.choose')
+    = f.input :link
+    = f.input :price, as: :price
+    = f.association :dimensions, collection: dimensions
+    = f.input :category_id, collection: categories, selected: (@cap.category.id if @cap.category)
+    = f.input :image
+
+  .form_actions
+    = f.button :submit, :class => 'btn btn-default'
+    = link_to t('helpers.submit.cancel'), :back, :class => 'btn btn-default'
+

@@ -1,0 +1,11 @@
+.bar-title
+  %h2.pull-left= t('model.users')
+  .btn-group.pull-right
+    = link_to new_user_path, :class => 'btn btn-default', :title => t('user.new') do
+      %span.fa.fa-plus
+
+#users.partial
+  = render :partial => 'listing', :locals => {:users => @users}
+
+
+

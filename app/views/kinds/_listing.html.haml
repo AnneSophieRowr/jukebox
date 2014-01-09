@@ -1,0 +1,21 @@
+- if kinds.empty?
+  = t('kind.empty')
+
+- else
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= t('kind.name')
+        %th
+    %tbody
+      - kinds.each do |kind|
+        %tr
+          %td= kind.name
+          %td
+            = link_to edit_kind_path(kind), :class => 'btn btn-default', :title => t('kind.edit') do
+              %span.fa.fa-edit
+            = link_to kind_path(kind), :class => 'btn btn-default', :title => t('kind.destroy'), method: :delete, data: { confirm: t('kind.confirm_destroy') } do
+              %span.fa.fa-times
+
+

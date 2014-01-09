@@ -1,0 +1,11 @@
+.bar-title
+  %h2.pull-left= t('model.caps')
+  .btn-group.pull-right
+    = link_to new_cap_path, :class => 'btn btn-default', :title => t('cap.new') do
+      %span.fa.fa-plus
+
+#caps.partial
+  = render :partial => 'listing', :locals => {:caps => @caps}
+
+
+

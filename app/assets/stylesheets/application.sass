@@ -1,0 +1,87 @@
+//= require jquery.ui.datepicker
+//= require_self
+//= require_tree .
+//= require_tree ./libs
+
+body
+  padding-top: 20px
+
+.clear
+  clear: both
+
+.signin
+  width: 600px
+  position: relative
+  left: 25% 
+  margin-top: 30px
+  h2
+    text-align: center
+    margin-bottom: 40px
+  label
+    margin-left: 60px
+  .btn 
+    position: relative
+    left: 50%
+    margin-left: -55px
+
+.destroy 
+  height: 20px
+
+.bar-title
+  height: 70px
+  .btn-group
+    position: relative
+    top: 50%
+    margin-top: -17px
+
+.col-md-3
+  width: 340px !important
+  height: 200px
+  margin: 20px
+  border: 2px solid rgba(0, 0, 0, 0.6)
+  display: table
+  border-radius: 5px
+  &.bought
+    opacity: 0.4 !important
+  &:hover
+    background-color: #1c1e22
+    cursor: pointer
+    .actions
+      display: block
+  &:active
+    cursor: move
+  .media
+    display: table-cell
+    vertical-align: middle
+    text-align: center
+    .media-body
+      position: absolute
+      top: 50%
+      left: 50%
+      width: 50%
+      margin: -15% 0 0 0
+
+#users, #brands
+  tr:hover td
+    cursor: pointer
+    background-color: #1c1e22 !important
+
+.actions
+  margin-top: 20px
+  display: none
+
+.brand_select, .category_select
+  border-top-right-radius: 4px !important
+  border-bottom-right-radius: 4px !important
+  width: 97% !important
+
+.filter, .sort
+  margin-right: 20px
+
+.color_image
+  width: 150px
+  height: 130px
+
+.product, .list
+  &.selected
+    background-color: #1c1e22

@@ -1,0 +1,16 @@
+fr:
+  simple_form:
+    required:
+      text: 'required'
+      mark: '*'
+    labels:
+      defaults:
+        name: 'Nom'
+      user:
+        last_name: 'Nom de famille'
+        first_name: 'Prénom'
+        password: 'Mot de passe'
+        password_confirmation: 'Confirmation du mot de passe'
+      playlist:
+        kind_id: "Genre musical"
+        image: "Vignette"

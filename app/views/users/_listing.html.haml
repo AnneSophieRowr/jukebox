@@ -1,0 +1,22 @@
+- if users.empty?
+  = t('user.empty')
+
+- else
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= t('user.name')
+        %th= t('user.email')
+        %th
+    %tbody
+      - users.each do |user|
+        %tr
+          %td= user.name
+          %td= user.email
+          %td
+            = link_to edit_user_path(user), :class => 'btn btn-default', :title => t('user.edit').html_safe do
+              %span.fa.fa-edit
+            = link_to user_path(user), :class => 'btn btn-default', :title => t('user.destroy').html_safe, method: :delete, data: { confirm: t('user.confirm_destroy').html_safe } do
+              %span.fa.fa-times
+
