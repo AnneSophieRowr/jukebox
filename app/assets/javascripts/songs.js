@@ -1,2 +1,12 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(document).ready(function(){
+
+  $('#song_file').uploadify({
+    'swf'           : '../flash/uploadify.swf',
+    'uploader'      : 'create',
+    'fileTypeDesc'  : 'Music files',
+    'fileTypeExts'  : '*.mp3',
+    'buttonText'    : 'Choisissez un fichier',
+    'width'         : '200'
+  });
+
+});

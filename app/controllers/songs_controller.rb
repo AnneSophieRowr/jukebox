@@ -1,58 +1,54 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
-  # GET /songs
   def index
-    @songs = Song.all
+    @songs = SongDecorator.decorate_collection(Song.all)
   end
 
-  # GET /songs/1
-  def show
-  end
-
-  # GET /songs/new
   def new
     @song = Song.new
   end
 
-  # GET /songs/1/edit
   def edit
   end
 
-  # POST /songs
   def create
     @song = Song.new(song_params)
 
-    if @song.save
-      redirect_to @song, notice: 'Song was successfully created.'
-    else
-      render action: 'new'
+    respond_to do |format|
+      if @song.save
+        format.html { redirect_to songs_path, notice: t('song.create', name: @song.name) }
+      else
+        format.html { render action: 'new' }
+      end
     end
   end
 
-  # PATCH/PUT /songs/1
   def update
-    if @song.update(song_params)
-      redirect_to @song, notice: 'Song was successfully updated.'
-    else
-      render action: 'edit'
+    respond_to do |format|
+      if @song.update(song_params)
+        format.html { redirect_to songs_path, notice: t('song.update', name: @song.name) }
+      else
+        format.html { render action: 'edit' }
+      end
     end
   end
 
-  # DELETE /songs/1
   def destroy
+  name = @song.name
     @song.destroy
-    redirect_to songs_url, notice: 'Song was successfully destroyed.'
+      respond_to do |format|
+      format.html { redirect_to songs_url, notice: t('song.destroyed', name: name) }
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_song
-      @song = Song.find(params[:id])
-    end
+  def set_song
+    @song = Song.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def song_params
-      params[:song]
-    end
+  def song_params
+  params.require(:song).permit(:name, :image, :file, :artist, :album, :duration, :user_id)
+  end
+
 end

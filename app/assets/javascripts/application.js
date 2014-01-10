@@ -8,6 +8,25 @@
 //= require_tree ./libs
 
 $(document).ready(function(){
+  
+  $("#jquery_jplayer_1").jPlayer();
 
+  $('.play').on('click', function() {
+    $("#jquery_jplayer_1").jPlayer('destroy');
+    src = $(this).attr('src');
+    $("#jquery_jplayer_1").jPlayer( {
+      ready: function() { 
+        $(this).jPlayer("setMedia", { 
+          mp3: src
+        }).jPlayer("play"); 
+      },
+      ended: function() { 
+        $(this).jPlayer("play"); 
+      },
+      supplied: "mp3",
+      swfPath: "/flash",
+    });
+  });
 
 });
+

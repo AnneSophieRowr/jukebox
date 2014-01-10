@@ -14,7 +14,8 @@ fr:
   model:
     users: "Utilisateur(s)"
     kinds: "Genre musicaux"
-    playlists: "Playlists"
+    playlists: "Playlist(s)"
+    songs: "Titre(s)"
   user:
     new: "Créer un utilisateur"
     create: "L'utilisateur %{name} a été créé avec succès."
@@ -37,6 +38,7 @@ fr:
     destroyed: "Le genre musical %{name} a été supprimé avec succès."
     empty: "Aucune genre musical"
     name: "Nom"
+    image: "Vignette"
   playlist:
     new: "Créer une playlist"
     create: "La playlist %{name} a été créée avec succès."
@@ -50,6 +52,24 @@ fr:
     kind: "Genre musical"
     user: "Créateur"
     image: "Vignette"
+    created_at: "Date de création"
+  song:
+    play: "Lire"
+    new: "Créer un titre"
+    create: "Le titre %{name} a été créé avec succès."
+    edit: "Mettre à jour un titre"
+    update: "Le titre %{name} a été mis à jour avec succès."
+    destroy: "Supprimer ce titre"
+    confirm_destroy: "Etes-vous sûr de vouloir supprimer ce titre?"
+    destroyed: "Le titre %{name} a été supprimé avec succès."
+    empty: "Aucune titre"
+    name: "Nom"
+    artist: "Artiste"
+    album: "Album"
+    duration: "Durée"
+    image: "Vignette"
+    file: "Fichier"
+    user: "Créateur"
     created_at: "Date de création"
   views:
     pagination:

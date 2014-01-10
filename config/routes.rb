@@ -1,11 +1,10 @@
 Jukebox::Application.routes.draw do
-  resources :songs
 
   devise_for :users
 
   root 'users#index'
 
-  resources :users, :kinds, :playlists
+  resources :users, :kinds, :playlists, :songs
 
   resources :users do 
    resources :playlists
@@ -14,5 +13,7 @@ Jukebox::Application.routes.draw do
   resources :kinds do 
    resources :playlists
   end
+
+  post 'songs/create'
 
 end

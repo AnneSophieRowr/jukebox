@@ -1,0 +1,33 @@
+- if songs.empty?
+  = t('song.empty')
+
+- else
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th
+        %th= t('song.name')
+        %th= t('song.artist')
+        %th= t('song.album')
+        %th= t('song.duration')
+        %th= t('song.user')
+        %th
+    %tbody
+      - songs.each do |song|
+        %tr
+          %td.img= image_tag song.image_url(:thumb)
+          %td= song.name
+          %td= song.artist
+          %td= song.album
+          %td= song.duration
+          %td= song.user.decorate.name
+          %td
+            = link_to '#', :class => 'btn btn-default play', :title => t('song.play'), :src => song.file.url  do
+              %span.fa.fa-play
+            = link_to edit_song_path(song), :class => 'btn btn-default', :title => t('song.edit') do
+              %span.fa.fa-edit
+            = link_to song_path(song), :class => 'btn btn-default', :title => t('song.destroy'), method: :delete, data: { confirm: t('song.confirm_destroy') } do
+              %span.fa.fa-times
+
+

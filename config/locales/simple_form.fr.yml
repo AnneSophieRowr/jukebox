@@ -6,6 +6,7 @@ fr:
     labels:
       defaults:
         name: 'Nom'
+        image: "Vignette"
       user:
         last_name: 'Nom de famille'
         first_name: 'Prénom'
@@ -13,4 +14,9 @@ fr:
         password_confirmation: 'Confirmation du mot de passe'
       playlist:
         kind_id: "Genre musical"
-        image: "Vignette"
+      song:
+        file: "Fichier"
+        artist: "Artiste"
+        album: "Album"
+        duration: "Durée"
+        user_id: "Créateur"

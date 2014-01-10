@@ -6,11 +6,13 @@
   %table.table.table-striped
     %thead
       %tr
+        %th= t('kind.image')
         %th= t('kind.name')
         %th
     %tbody
       - kinds.each do |kind|
         %tr
+          %td.img= image_tag kind.image_url(:thumb)
           %td= kind.name
           %td
             = link_to edit_kind_path(kind), :class => 'btn btn-default', :title => t('kind.edit') do

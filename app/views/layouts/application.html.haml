@@ -26,3 +26,6 @@
               = content_tag :div, msg.html_safe, :id => "flash_#{name}" if msg.is_a?(String)    
           = yield
 
+      .row.player
+        .col-md-12
+          = render :partial => 'shared/player'
