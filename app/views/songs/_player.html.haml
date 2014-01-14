@@ -1,0 +1,35 @@
+#jp_container_1.jp-video
+  .jp-type-single
+    #jquery_jplayer_1.jp-jplayer
+    .jp-gui
+      .jp-video-play
+        = link_to 'javascript:;', 'play', :class => 'jp-video-play-icon', :tabiindex => '1'
+      .jp-interface
+        .jp-progress
+          .jp-seek-bar
+            .jp-play-bar
+        .jp-current-time
+        .jp-duration
+        .jp-controls-holder
+          %ul.jp-controls
+            %li= link_to 'javascript:;', 'play', :class => 'jp-play', :tabindex => '1'
+            %li= link_to 'javascript:;', 'pause', :class => 'jp-plause', :tabindex => '1'
+            %li= link_to 'javascript:;', 'stop', :class => 'jp-stop', :tabindex => '1'
+            %li= link_to 'javascript:;', 'mute', :class => 'jp-mute', :tabindex => '1', :title => 'mute'
+            %li= link_to 'javascript:;', 'unmute', :class => 'jp-unmute', :tabindex => '1', :title => 'unmute'
+            %li= link_to 'javascript:;', 'max volume', :class => 'jp-volume-max', :tabindex => '1', :title => 'max volume'
+          .jp-volume-bar
+            .jp-volume-bar-value
+          %ul.jp-toggles
+            %li= link_to 'javascript:;', 'full screen', :class => 'jp-full-screen', :tabindex => '1', :title => 'full screen'
+            %li= link_to 'javascript:;', 'restore screen', :class => 'jp-restore-screen', :tabindex => '1', :title => 'restore screen'
+            %li= link_to 'javascript:;', 'repeat', :class => 'jp-repeat', :tabindex => '1', :title => 'repeat'
+            %li= link_to 'javascript:;', 'repeat off', :class => 'jp-repeat-off', :tabindex => '1', :title => 'repeat pff'
+        .jp-title
+          %ul
+            %li 
+    .jp-no-solution
+      %span Update Required
+      To play the media you will need to either update your browser to a recent version or update your
+      = succeed "." do
+        %a{href: "http://get.adobe.com/flashplayer/", target: "_blank"} Flash plugin

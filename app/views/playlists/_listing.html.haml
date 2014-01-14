@@ -11,6 +11,7 @@
         %th= t('playlist.kind')
         %th= t('playlist.user')
         %th= t('playlist.created_at')
+        %th= t('playlist.songs')
         %th
     %tbody
       - playlists.each do |playlist|
@@ -20,7 +21,14 @@
           %td= playlist.kind.name
           %td= playlist.user.decorate.name
           %td= playlist.created_at
+          %td= playlist.songs.size
           %td
+            = link_to play_playlist_path(playlist), :class => 'btn btn-default play', :title => t('helpers.words.play') do
+              %span.fa.fa-play
+            = link_to manage_playlist_path(playlist), :class => 'btn btn-default', :title => t('playlist.manage') do
+              %span.fa-stack
+                %i.fa.fa-music
+                %i.fa.fa-plus
             = link_to edit_playlist_path(playlist), :class => 'btn btn-default', :title => t('playlist.edit') do
               %span.fa.fa-edit
             = link_to playlist_path(playlist), :class => 'btn btn-default', :title => t('playlist.destroy'), method: :delete, data: { confirm: t('playlist.confirm_destroy') } do

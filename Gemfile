@@ -23,3 +23,5 @@ gem 'uglifier', '>= 1.3.0'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'remotipart'
+
+gem 'acts_as_list'

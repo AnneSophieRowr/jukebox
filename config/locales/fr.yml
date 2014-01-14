@@ -2,6 +2,12 @@ fr:
   activerecord:
     errors:
       models: 
+        song:
+          attributes:
+            name:
+              blank: "Le nom ne doit pas être vide"
+            file:
+              blank: "Le fichier ne doit pas être vide"
         user:
           attributes:
             email:
@@ -47,14 +53,15 @@ fr:
     destroy: "Supprimer cette playlist"
     confirm_destroy: "Etes-vous sûr de vouloir supprimer cette playlist?"
     destroyed: "La playlist %{name} a été supprimée avec succès."
+    manage: "Gérer les titres"
     empty: "Aucune playlist"
     name: "Nom"
     kind: "Genre musical"
     user: "Créateur"
     image: "Vignette"
     created_at: "Date de création"
+    songs: "Titre(s)"
   song:
-    play: "Lire"
     new: "Créer un titre"
     create: "Le titre %{name} a été créé avec succès."
     edit: "Mettre à jour un titre"
@@ -62,6 +69,7 @@ fr:
     destroy: "Supprimer ce titre"
     confirm_destroy: "Etes-vous sûr de vouloir supprimer ce titre?"
     destroyed: "Le titre %{name} a été supprimé avec succès."
+    search: "Rechercher un titre..."
     empty: "Aucune titre"
     name: "Nom"
     artist: "Artiste"
@@ -83,6 +91,8 @@ fr:
     reset: "Remettre à zéro"
   helpers:
     words:
+      play: "Lire"
+      pause: "Pause"
       yeslabel: "Oui"
       nolabel: "Non"
       none: "Aucun(e)"

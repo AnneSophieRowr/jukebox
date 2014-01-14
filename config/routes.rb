@@ -4,8 +4,6 @@ Jukebox::Application.routes.draw do
 
   root 'users#index'
 
-  resources :users, :kinds, :playlists, :songs
-
   resources :users do 
    resources :playlists
   end
@@ -14,6 +12,20 @@ Jukebox::Application.routes.draw do
    resources :playlists
   end
 
-  post 'songs/create'
+  resources :songs do
+    get :play, on: :member
+    collection do 
+      get :search
+    end
+  end
+
+  resources :playlists do
+    member do 
+      get :play
+      get :manage
+      get :add_song
+      post :sort
+    end
+  end
 
 end

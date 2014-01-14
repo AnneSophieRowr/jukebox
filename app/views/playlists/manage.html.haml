@@ -1,0 +1,18 @@
+%legend
+  %h2= @playlist.name
+
+.well
+  .col-lg-12
+    = text_field_tag :q, nil, :placeholder => t('song.search'), :class => 'form-control search_songs'
+
+%ul.media-list#sortable_songs{url: sort_playlist_path(@playlist)}
+  - @playlist.songs.each do |s|
+    %li.media.handle{:id => "song_#{s.id}"}
+      = link_to '#', class: 'pull-left' do
+        = image_tag s.image_url(:thumb)
+      .media-body
+        %h4.media-heading= s.name
+        = s.artist
+        %br
+        = s.album
+
