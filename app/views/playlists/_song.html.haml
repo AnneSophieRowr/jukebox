@@ -1,0 +1,13 @@
+%li.media.handle{id: "song_#{song.id}"}
+  = link_to '#', class: 'pull-left' do
+    = image_tag song.image_url(:thumb)
+  .media-body
+    %h4.media-heading= song.name
+    = song.artist
+    %br
+    = song.album
+  .media-actions
+    = link_to edit_song_path(song), class: 'btn btn-default', title: t('song.edit') do
+      %span.fa.fa-edit
+    = link_to playlists_song_path(playlists_song), method: :delete, remote: true, class: 'btn btn-default delete_song', title: t('playlist.new') do
+      %span.fa.fa-trash-o

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140114105108) do
+ActiveRecord::Schema.define(version: 20140115152403) do
 
   create_table "kinds", force: true do |t|
     t.string   "name",       null: false
@@ -20,10 +20,14 @@ ActiveRecord::Schema.define(version: 20140114105108) do
     t.string   "image"
   end
 
+  create_table "kinds_playlists", force: true do |t|
+    t.integer "kind_id"
+    t.integer "playlist_id"
+  end
+
   create_table "playlists", force: true do |t|
     t.string   "name",       null: false
     t.string   "image"
-    t.integer  "kind_id",    null: false
     t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"

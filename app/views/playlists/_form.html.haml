@@ -2,7 +2,7 @@
 
   .well
     = f.input :name
-    = f.input :kind_id, collection: kinds, selected: (@playlist.kind.id if @playlist.kind)
+    = f.association :kinds, collection: kinds
     = f.input :image
     = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
 

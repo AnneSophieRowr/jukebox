@@ -5,9 +5,15 @@ class PlaylistsController < ApplicationController
     @playlists = PlaylistDecorator.decorate_collection(Playlist.all)
   end
 
-  def add_song
-    @playlist.add_song(params[:song_id]) 
+  def import
+    Playlist.import(params[:import][:file].tempfile)
     render nothing: true
+  end
+
+  def add_song
+    song = Song.find(params[:song_id])
+    ps = @playlist.add_song(params[:song_id]) 
+    render partial: 'song', locals: {song: song, playlists_song: ps}
   end
 
   def play
@@ -70,7 +76,7 @@ class PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:name, :image, :kind_id, :user_id, song_ids: [])
+    params.require(:playlist).permit(:name, :image, :kind_id, :user_id, song_ids: [], kind_ids: [])
   end
 
 end

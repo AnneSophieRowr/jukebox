@@ -46,6 +46,7 @@ fr:
     name: "Nom"
     image: "Vignette"
   playlist:
+    import: "Importer des playlists"
     new: "Créer une playlist"
     create: "La playlist %{name} a été créée avec succès."
     edit: "Mettre à jour une playlist"

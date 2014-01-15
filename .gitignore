@@ -12,6 +12,7 @@ capybara-*.html
 /public/system/*
 <<<<<<< HEAD
 /public/uploads/*
+/public/temp/*
 /coverage/
 /spec/tmp/*
 **.orig

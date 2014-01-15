@@ -18,13 +18,15 @@
         %tr
           %td.img= image_tag playlist.image_url(:thumb)
           %td= playlist.name
-          %td= playlist.kind.name
+          %td= playlist.kinds_name
           %td= playlist.user.decorate.name
           %td= playlist.created_at
           %td= playlist.songs.size
           %td
             = link_to play_playlist_path(playlist), :class => 'btn btn-default play', :title => t('helpers.words.play') do
               %span.fa.fa-play
+            = link_to '#', :class => 'btn btn-default pause', :title => t('helpers.words.pause') do
+              %span.fa.fa-pause
             = link_to manage_playlist_path(playlist), :class => 'btn btn-default', :title => t('playlist.manage') do
               %span.fa-stack
                 %i.fa.fa-music

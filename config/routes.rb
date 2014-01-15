@@ -12,6 +12,8 @@ Jukebox::Application.routes.draw do
    resources :playlists
   end
 
+  resources :playlists_songs
+
   resources :songs do
     get :play, on: :member
     collection do 
@@ -25,6 +27,9 @@ Jukebox::Application.routes.draw do
       get :manage
       get :add_song
       post :sort
+    end
+    collection do
+      post :import
     end
   end
 

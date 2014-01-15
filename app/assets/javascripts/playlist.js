@@ -1,8 +1,37 @@
 $(document).ready(function(){
 
+  $("#playlist_kind_ids").multiselect({
+    includeSelectAllOption: true,
+    selectAllText: 'Tout sélectionner',
+    nonSelectedText: 'Aucune sélection'
+  }); 
+
+  $('.import_btn').on('click', function() {
+    $('#import_file').click();
+  });
+
+  $('#import_file').on('change', function() {
+    $('form').submit();
+    return false;
+  });
+
+  $('#playlists .pause').hide();
+
   template = '<div class="media">';
   template += '<a class="pull-left" href="#"><img class="media-object" src="{{img}}"></a>';
   template += '<div class="media-body"><h4 class="media-heading">{{title}}</h4>{{artist}}<br />{{album}}</div</div>';
+
+  $(document).on('ajax:complete', '.delete_song', function(response, data) {
+    $(this).parent().parent().hide();
+  });
+
+  $('li.media')
+    .on('mouseover', function() {
+      $(this).children('.media-actions').css("visibility","visible");
+    })
+    .on('mouseout', function() {
+      $(this).children('.media-actions').css("visibility","hidden");
+  });
 
   $('#sortable_songs').sortable({
     axis: 'y',
@@ -28,7 +57,7 @@ $(document).ready(function(){
     {
       limit: 5,
       valueKey: 'title',
-      remote: '../../songs/search?q=%QUERY&playlist=' + $('#playlist').val(),
+      remote: '../../songs/search?q=%QUERY',
       template: template,
       engine: Hogan
     }
@@ -40,12 +69,13 @@ $(document).ready(function(){
       url: 'add_song',
       data: 'song_id=' + datum.song_id,
       success: function(data) {
-        console.log('ola que tal');
+        $('ul.media-list').append(data);
       }
     });
   });
 
   $('#playlists .play').on('click', function() {
+    $btn = $(this);
     $.ajax({
       url: $(this)[0].href,
       dataType: 'json',
@@ -54,9 +84,17 @@ $(document).ready(function(){
         var options = { swfPath: "/flash", supplied: "mp3", autoPlay: true };
         var myPlaylist = new jPlayerPlaylist(cssSelector, songs, options);
         myPlaylist.play(0);
+        $btn.hide();
+        $btn.next().show();
       }
     });
     return false;
+  });
+
+  $('#playlists .pause').on('click', function() {
+    $(this).hide();
+    $(this).prev().show();
+    $("#jquery_jplayer_1").jPlayer('pause');
   });
 
 });
