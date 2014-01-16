@@ -6,7 +6,7 @@ class PlaylistsController < ApplicationController
   end
 
   def import
-    Playlist.import(params[:import][:file].tempfile)
+    Playlist.import(params[:import][:file].tempfile, current_user)
     render nothing: true
   end
 

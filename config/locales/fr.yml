@@ -8,10 +8,14 @@ fr:
               blank: "Le nom ne doit pas être vide"
             file:
               blank: "Le fichier ne doit pas être vide"
+        kind:
+          attributes:
+            name:
+              taken: "Ce nom est déjà utilisé"
         user:
           attributes:
             email:
-              taken: "Cet email est déjà pris."
+              taken: "Cet email est déjà pris"
             password:
               blank: "Veuillez renseigner le mot de passe"
               too_short: "Le mot de passe est trop court"

@@ -92,6 +92,7 @@ GEM
     remotipart (1.2.1)
     request_store (1.0.5)
     rmagick (2.13.2)
+    ruby-mp3info (0.8.2)
     rubyzip (1.1.0)
     sass (3.2.13)
     sass-rails (4.0.1)
@@ -147,6 +148,7 @@ DEPENDENCIES
   rails (= 4.0.0)
   remotipart
   rmagick
+  ruby-mp3info
   rubyzip (>= 1.0.0)
   sass-rails (~> 4.0.0)
   simple_form
