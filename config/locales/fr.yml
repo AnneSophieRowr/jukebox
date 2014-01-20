@@ -67,6 +67,7 @@ fr:
     created_at: "Date de création"
     songs: "Titre(s)"
   song:
+    import: "Importer des titres"
     new: "Créer un titre"
     create: "Le titre %{name} a été créé avec succès."
     edit: "Mettre à jour un titre"

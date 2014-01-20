@@ -18,6 +18,7 @@ Jukebox::Application.routes.draw do
     get :play, on: :member
     collection do 
       get :search
+      post :import
     end
   end
 

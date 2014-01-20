@@ -5,6 +5,11 @@ class SongsController < ApplicationController
     @songs = SongDecorator.decorate_collection(Song.all)
   end
 
+  def import
+    Song.import(params[:import][:file].tempfile, current_user)
+    render nothing: true
+  end
+
   def play
     song_data = {title: @song.name, artist: @song.artist, mp3: @song.file.url, poster: @song.image.url}
     render json: song_data.to_json
