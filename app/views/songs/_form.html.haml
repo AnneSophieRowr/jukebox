@@ -2,7 +2,7 @@
 
   .well
     = f.input :name
-    = f.input :artist_id, collection: Artist.all, selected: @song.artist, prompt: t('helpers.words.choose')
+    = f.input :artist_id, collection: artists, selected: (@song.artist.id unless @song.artist.nil?), prompt: t('helpers.words.choose')
     = f.input :album
     = f.input :duration
     = f.association :playlists, collection: playlists

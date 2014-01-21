@@ -18,7 +18,7 @@ class SongsController < ApplicationController
 
   def search
     q = "%#{params[:q]}%"
-    songs = Song.where("name like ? or album like ? or artist_id = (select id from artists where name like ?)", q, q, q)
+    songs = Song.where("name like ? or album like ? or artist_id in (select id from artists where name like ?)", q, q, q)
     songs.collect! {|s| {artist: (s.artist.nil? ? "" : s.artist.name), album: s.album, img: s.image.url(:thumb), title: s.name, song_id: s.id}}
     render json: songs.to_json
   end
