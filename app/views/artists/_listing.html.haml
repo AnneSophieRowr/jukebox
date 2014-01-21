@@ -1,0 +1,25 @@
+- if artists.empty?
+  = t('artist.empty')
+
+- else
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th
+        %th= t('artist.name')
+        %th= t('artist.description')
+        %th
+    %tbody
+      - artists.each do |artist|
+        %tr
+          %td.img= image_tag artist.image_url(:thumb)
+          %td= artist.name
+          %td= artist.description
+          %td
+            = link_to edit_artist_path(artist), :class => 'btn btn-default', :title => t('artist.edit') do
+              %span.fa.fa-edit
+            = link_to artist_path(artist), :class => 'btn btn-default', :title => t('artist.destroy'), method: :delete, data: { confirm: t('artist.confirm_destroy') } do
+              %span.fa.fa-times
+
+

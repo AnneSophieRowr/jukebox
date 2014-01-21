@@ -4,6 +4,8 @@ Jukebox::Application.routes.draw do
 
   root 'users#index'
 
+  resources :artists
+
   resources :users do 
    resources :playlists
   end

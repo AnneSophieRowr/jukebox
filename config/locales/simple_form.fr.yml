@@ -16,7 +16,7 @@ fr:
         kind_id: "Genre musical"
       song:
         file: "Fichier"
-        artist: "Artiste"
+        artist_id: "Artiste"
         album: "Album"
         duration: "Durée"
         user_id: "Créateur"

@@ -12,6 +12,10 @@ fr:
           attributes:
             name:
               taken: "Ce nom est déjà utilisé"
+        artist:
+          attributes:
+            name:
+              blank: "Veuillez renseigner le nom"
         user:
           attributes:
             email:
@@ -26,6 +30,19 @@ fr:
     kinds: "Genre musicaux"
     playlists: "Playlist(s)"
     songs: "Titre(s)"
+    artists: "Artiste(s)"
+  artist:
+    new: "Créer un artiste"
+    create: "L'artiste %{name} a été créé avec succès."
+    edit: "Mettre à jour un artiste"
+    update: "L'artiste %{name} a été mis à jour avec succès."
+    destroy: "Supprimer cet utilisteur"
+    confirm_destroy: "Etes-vous sûr de vouloir supprimer cet artiste?"
+    destroyed: "L'artiste %{name} a été supprimé avec succès."
+    empty: "Aucun artiste"
+    name: "Nom"
+    description: "Description"
+    image: "Image"
   user:
     new: "Créer un utilisateur"
     create: "L'utilisateur %{name} a été créé avec succès."
@@ -78,7 +95,7 @@ fr:
     search: "Rechercher un titre..."
     empty: "Aucune titre"
     name: "Nom"
-    artist: "Artiste"
+    artist_id: "Artiste"
     album: "Album"
     duration: "Durée"
     image: "Vignette"

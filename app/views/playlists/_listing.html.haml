@@ -28,9 +28,7 @@
             = link_to '#', :class => 'btn btn-default pause', :title => t('helpers.words.pause') do
               %span.fa.fa-pause
             = link_to manage_playlist_path(playlist), :class => 'btn btn-default', :title => t('playlist.manage') do
-              %span.fa-stack
-                %i.fa.fa-music
-                %i.fa.fa-plus
+              %span.fa.fa-music
             = link_to edit_playlist_path(playlist), :class => 'btn btn-default', :title => t('playlist.edit') do
               %span.fa.fa-edit
             = link_to playlist_path(playlist), :class => 'btn btn-default', :title => t('playlist.destroy'), method: :delete, data: { confirm: t('playlist.confirm_destroy') } do

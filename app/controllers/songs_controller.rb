@@ -11,14 +11,15 @@ class SongsController < ApplicationController
   end
 
   def play
-    song_data = {title: @song.name, artist: @song.artist, mp3: @song.file.url, poster: @song.image.url}
+    artist = @song.artist.nil? ? "" : @song.artist.name
+    song_data = {title: @song.name, artist: artist, mp3: @song.file.url, poster: @song.image.url}
     render json: song_data.to_json
   end
 
   def search
     q = "%#{params[:q]}%"
-    songs = Song.where("name like ? or artist like ? or album like ?", q, q, q)
-    songs.collect! {|s| {artist: s.artist, album: s.album, img: s.image.url(:thumb), title: s.name, song_id: s.id}}
+    songs = Song.where("name like ? or album like ? or artist_id = (select id from artists where name like ?)", q, q, q)
+    songs.collect! {|s| {artist: (s.artist.nil? ? "" : s.artist.name), album: s.album, img: s.image.url(:thumb), title: s.name, song_id: s.id}}
     render json: songs.to_json
   end
 
@@ -65,7 +66,7 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    params.require(:song).permit(:name, :image, :file, :artist, :album, :duration, :user_id, playlist_ids: [])
+    params.require(:song).permit(:name, :image, :file, :artist_id, :album, :duration, :user_id, playlist_ids: [])
   end
 
 end

@@ -6,15 +6,6 @@ $(document).ready(function(){
     nonSelectedText: 'Aucune sélection'
   }); 
 
-  $('.import_btn').on('click', function() {
-    $('#import_file').click();
-  });
-
-  $('#import_file').on('change', function() {
-    $('form').submit();
-    return false;
-  });
-
   $('#playlists .pause').hide();
 
   template = '<div class="media">';
@@ -64,7 +55,6 @@ $(document).ready(function(){
   ]);
 
   $('.search_songs').on('typeahead:selected', function (object, datum) {
-    console.log(datum);
     $.ajax({
       url: 'add_song',
       data: 'song_id=' + datum.song_id,

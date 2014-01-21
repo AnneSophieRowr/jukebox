@@ -1,0 +1,12 @@
+.bar-title
+  %h2.pull-left= t('model.artists')
+  .btn-group.pull-right
+    = link_to new_artist_path, :class => 'btn btn-default', :title => t('artist.new') do
+      %span.fa.fa-plus
+
+#artists.partial
+  = render :partial => 'listing', :locals => {:artists => @artists}
+
+.player
+  = render :partial => 'player'
+

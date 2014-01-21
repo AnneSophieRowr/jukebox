@@ -13,5 +13,14 @@ $(document).ready(function(){
 
   $("#jquery_jplayer_1").jPlayer();
 
+  $('.import_btn').on('click', function() {
+    $('#import_file').click();
+  });
+
+  $('#import_file').on('change', function() {
+    $('form').submit();
+    return false;
+  });
+
 });
 

@@ -1,14 +1,5 @@
 $(document).ready(function(){
 
-  $('.import_btn').on('click', function() {
-    $('#import_file').click();
-  });
-
-  $('#import_file').on('change', function() {
-    $('form').submit();
-    return false;
-  });
-
   $("#song_playlist_ids").multiselect({
     includeSelectAllOption: true,
     selectAllText: 'Tout sélectionner',
