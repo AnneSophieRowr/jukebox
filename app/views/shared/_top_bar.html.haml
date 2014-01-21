@@ -1,6 +1,7 @@
 .navbar.navbar-default
   .navbar-header
-    = link_to 'Jukebox', playlists_path, class: 'navbar-brand'
+    = link_to playlists_path, class: 'navbar-brand' do
+      = image_tag 'logo_brand.png'
 
   .collapse.navbar-collapse.navbar-ex1-collapse
     %ul.nav.navbar-nav

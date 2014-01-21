@@ -1,7 +1,9 @@
+.logo
+
 .well.signin
   %h2= t('devise.sign')
-  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal'}) do |f| 
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| 
     = f.input :email, :required => false, :autofocus => true 
     = f.input :password, :required => false 
-    = f.button :submit, t('devise.signin') 
+    = f.button :submit, t('devise.signin'), class: 'btn-default .btn-block'
 
