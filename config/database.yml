@@ -15,4 +15,4 @@ production:
   database: jukebox
   username: root
   password: chilibpi
-          
+  encoding: utf8
