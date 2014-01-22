@@ -10,9 +10,7 @@ capybara-*.html
 /tmp/*
 /db/*.sqlite3
 /public/system/*
-<<<<<<< HEAD
 /public/uploads/*
-/public/temp/*
 /coverage/
 /spec/tmp/*
 **.orig
