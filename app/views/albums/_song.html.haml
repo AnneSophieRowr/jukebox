@@ -9,5 +9,5 @@
   .media-actions
     = link_to edit_song_path(song), class: 'btn btn-default', title: t('song.edit') do
       %span.fa.fa-edit
-    = link_to playlists_song_path(playlists_song), method: :delete, remote: true, class: 'btn btn-default delete_song', title: t('playlist.new') do
+    = link_to albums_song_path(albums_song), method: :delete, remote: true, class: 'btn btn-default delete_song', title: t('playlist.new') do
       %span.fa.fa-trash-o

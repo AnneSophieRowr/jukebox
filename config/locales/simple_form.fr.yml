@@ -7,6 +7,7 @@ fr:
       defaults:
         name: 'Nom'
         image: "Vignette"
+        artist_id: "Artiste"
       user:
         last_name: 'Nom de famille'
         first_name: 'Prénom'
@@ -16,7 +17,9 @@ fr:
         kind_id: "Genre musical"
       song:
         file: "Fichier"
-        artist_id: "Artiste"
         album: "Album"
         duration: "Durée"
+        user_id: "Créateur"
+      album:
+        year: "Année"
         user_id: "Créateur"

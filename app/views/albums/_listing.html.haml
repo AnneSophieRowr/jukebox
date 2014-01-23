@@ -1,0 +1,33 @@
+- if albums.empty?
+  = t('album.empty')
+
+- else
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th
+        %th= t('album.name')
+        %th= t('album.songs')
+        %th= t('album.year')
+        %th= t('album.artist_id')
+        %th= t('album.user_id')
+        %th
+    %tbody
+      - albums.each do |album|
+        %tr
+          %td.img= image_tag album.image_url(:thumb)
+          %td= album.name
+          %td= album.songs.count
+          %td= album.year
+          %td= album.artist
+          %td= album.user.decorate.name
+          %td
+            = link_to manage_album_path(album), :class => 'btn btn-default', :title => t('album.manage') do
+              %span.fa.fa-music
+            = link_to edit_album_path(album), :class => 'btn btn-default', :title => t('album.edit') do
+              %span.fa.fa-edit
+            = link_to album_path(album), :class => 'btn btn-default', :title => t('album.destroy'), method: :delete, data: { confirm: t('album.confirm_destroy') } do
+              %span.fa.fa-times
+
+

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  $("#song_playlist_ids").multiselect({
+  $("#song_playlist_ids, #song_album_ids").multiselect({
     includeSelectAllOption: true,
     selectAllText: 'Tout sélectionner',
     nonSelectedText: 'Aucune sélection'

@@ -7,7 +7,7 @@ class PlaylistsController < ApplicationController
 
   def import
     Playlist.import(params[:import][:file].tempfile, current_user)
-    render nothing: true
+    render partial: 'listing', locals: {playlists: PlaylistDecorator.decorate_collection(Playlist.all)}
   end
 
   def add_song

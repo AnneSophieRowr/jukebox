@@ -3,9 +3,9 @@
   .well
     = f.input :name
     = f.input :artist_id, collection: artists, selected: (@song.artist.id unless @song.artist.nil?), prompt: t('helpers.words.choose')
-    = f.input :album
     = f.input :duration
     = f.association :playlists, collection: playlists
+    = f.association :albums, collection: albums
     = f.input :image
     = f.input :file
     = f.input :user_id, as: :hidden, input_html: { value: current_user.id }

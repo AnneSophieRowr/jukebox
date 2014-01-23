@@ -7,7 +7,7 @@ class SongsController < ApplicationController
 
   def import
     Song.import(params[:import][:file].tempfile, current_user)
-    render nothing: true
+    render partial: 'listing', locals: {songs: SongDecorator.decorate_collection(Song.all)}
   end
 
   def play
@@ -18,8 +18,8 @@ class SongsController < ApplicationController
 
   def search
     q = "%#{params[:q]}%"
-    songs = Song.where("name like ? or album like ? or artist_id in (select id from artists where name like ?)", q, q, q)
-    songs.collect! {|s| {artist: (s.artist.nil? ? "" : s.artist.name), album: s.album, img: s.image.url(:thumb), title: s.name, song_id: s.id}}
+    songs = Song.where("name like ? or artist_id in (select id from artists where name like ? )", q, q)
+    songs.collect! {|s| {artist: (s.artist.nil? ? "" : s.artist.name), album: s.decorate.albums, img: s.image.url(:thumb), title: s.name, song_id: s.id}}
     render json: songs.to_json
   end
 
@@ -66,7 +66,7 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    params.require(:song).permit(:name, :image, :file, :artist_id, :album, :duration, :user_id, playlist_ids: [])
+    params.require(:song).permit(:name, :image, :file, :artist_id, :duration, :user_id, playlist_ids: [], album_ids: [])
   end
 
 end

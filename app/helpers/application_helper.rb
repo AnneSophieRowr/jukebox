@@ -8,6 +8,10 @@ module ApplicationHelper
     Playlist.all.collect {|c| [c.name.capitalize, c.id]}
   end
 
+  def albums
+    Album.all.collect {|c| [c.name.capitalize, c.id]}
+  end
+
   def songs
     Song.all.collect {|c| [c.name.capitalize, c.id]}
   end

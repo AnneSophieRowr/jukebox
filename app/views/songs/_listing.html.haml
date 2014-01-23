@@ -9,7 +9,7 @@
         %th
         %th= t('song.name')
         %th= t('song.artist_id')
-        %th= t('song.album')
+        %th= t('song.albums')
         %th= t('song.duration')
         %th= t('song.user')
         %th
@@ -19,7 +19,7 @@
           %td.img= image_tag song.image_url(:thumb)
           %td= song.name
           %td= song.artist
-          %td= song.album
+          %td= song.albums
           %td= song.duration
           %td= song.user.decorate.name
           %td

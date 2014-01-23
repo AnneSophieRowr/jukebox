@@ -1,18 +1,19 @@
-class Song < ActiveRecord::Base
+class Album < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
-  mount_uploader :file, FileUploader
+
+  has_many :albums_songs, order: :position, dependent: :destroy
+  has_many :songs, through: :albums_songs
 
   belongs_to :user
   belongs_to :artist
 
-  has_many :playlists_songs, order: :position, dependent: :destroy
-  has_many :playlists, through: :playlists_songs
+  validates_presence_of :name, :user_id
 
-  has_many :albums_songs, order: :position, dependent: :destroy
-  has_many :albums, through: :albums_songs
-
-  validates_presence_of :file, :name
+  def add_song(song_id)
+    as = AlbumsSong.new(album_id: self.id, song_id: song_id)
+    as.save!
+  end
 
   require 'zip'
   require 'mp3info'

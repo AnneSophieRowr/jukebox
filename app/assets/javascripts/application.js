@@ -22,5 +22,9 @@ $(document).ready(function(){
     return false;
   });
 
+  $('form').on('ajax:complete', function(evt, data) {
+    $(".partial")[0].innerHTML = data.responseText;
+  });
+
 });
 
