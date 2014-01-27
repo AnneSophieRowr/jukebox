@@ -3,5 +3,4 @@ class User < ActiveRecord::Base
   default_scope { order('last_name') }
   has_many :playlists
   has_many :songs
-  has_many :albums
 end

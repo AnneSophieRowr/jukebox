@@ -2,9 +2,9 @@ Jukebox::Application.routes.draw do
 
   devise_for :users
 
-  root 'users#index'
+  root 'songs#index'
 
-  resources :artists, :playlists_songs, :albums_songs
+  resources :artists, :playlists_songs, :albums_songs, :parameters, :types
 
   resources :albums do
     member do

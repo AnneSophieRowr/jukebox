@@ -1,9 +1,8 @@
-= simple_form_for @kind, :html => {:class => 'form-horizontal'} do |f|
+= simple_form_for @parameter, :html => {:class => 'form-horizontal'} do |f|
 
   .well
     = f.input :name
-    = f.input :visible
-    = f.input :image
+    = f.input :value
 
   .form_actions
     = f.button :submit, :class => 'btn btn-default'

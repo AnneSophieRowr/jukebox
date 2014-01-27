@@ -8,16 +8,20 @@
       %tr
         %th= t('kind.image')
         %th= t('kind.name')
+        %th= t('kind.visible')
+        %th= t('kind.playlists')
         %th
     %tbody
       - kinds.each do |kind|
         %tr
           %td.img= image_tag kind.image_url(:thumb)
           %td= kind.name
+          %td= kind.visible
+          %td= kind.playlists.count
           %td
-            = link_to edit_kind_path(kind), :class => 'btn btn-default', :title => t('kind.edit') do
+            = link_to edit_kind_path(kind), :class => 'btn btn-default btn-sm', :title => t('kind.edit') do
               %span.fa.fa-edit
-            = link_to kind_path(kind), :class => 'btn btn-default', :title => t('kind.destroy'), method: :delete, data: { confirm: t('kind.confirm_destroy') } do
+            = link_to kind_path(kind), :class => 'btn btn-default btn-sm', :title => t('kind.destroy'), method: :delete, data: { confirm: t('kind.confirm_destroy') } do
               %span.fa.fa-times
 
 

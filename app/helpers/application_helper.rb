@@ -4,6 +4,10 @@ module ApplicationHelper
    Kind.all.collect {|c| [c.name.capitalize, c.id]}
   end
 
+  def types
+   Type.all.collect {|c| [c.name.capitalize, c.id]}
+  end
+
   def playlists
     Playlist.all.collect {|c| [c.name.capitalize, c.id]}
   end

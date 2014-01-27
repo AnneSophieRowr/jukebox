@@ -5,7 +5,6 @@
     = f.input :year
     = f.input :artist_id, collection: artists, selected: (@album.artist.id unless @album.artist.nil?), prompt: t('helpers.words.choose')
     = f.input :image
-    = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
 
   .form_actions
     = f.button :submit, :class => 'btn btn-default'

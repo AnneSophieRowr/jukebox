@@ -11,7 +11,6 @@
         %th= t('album.songs')
         %th= t('album.year')
         %th= t('album.artist_id')
-        %th= t('album.user_id')
         %th
     %tbody
       - albums.each do |album|
@@ -21,13 +20,12 @@
           %td= album.songs.count
           %td= album.year
           %td= album.artist
-          %td= album.user.decorate.name
           %td
-            = link_to manage_album_path(album), :class => 'btn btn-default', :title => t('album.manage') do
+            = link_to manage_album_path(album), :class => 'btn btn-default btn-sm', :title => t('album.manage') do
               %span.fa.fa-music
-            = link_to edit_album_path(album), :class => 'btn btn-default', :title => t('album.edit') do
+            = link_to edit_album_path(album), :class => 'btn btn-default btn-sm', :title => t('album.edit') do
               %span.fa.fa-edit
-            = link_to album_path(album), :class => 'btn btn-default', :title => t('album.destroy'), method: :delete, data: { confirm: t('album.confirm_destroy') } do
+            = link_to album_path(album), :class => 'btn btn-default btn-sm', :title => t('album.destroy'), method: :delete, data: { confirm: t('album.confirm_destroy') } do
               %span.fa.fa-times
 
 

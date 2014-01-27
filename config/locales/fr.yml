@@ -16,6 +16,16 @@ fr:
           attributes:
             name:
               blank: "Veuillez renseigner le nom"
+        parameter:
+          attributes:
+            name:
+              blank: "Veuillez renseigner le nom"
+            value:
+              blank: "Veuillez renseigner la valeur"
+        type:
+          attributes:
+            name:
+              blank: "Veuillez renseigner le nom"
         user:
           attributes:
             email:
@@ -31,12 +41,36 @@ fr:
     playlists: "Playlist(s)"
     songs: "Titre(s)"
     artists: "Artiste(s)"
+    parameters: "Paramètre(s)"
+    types: "Type(s) de playlists"
+    albums: "Album(s)"
+  parameter:
+    new: "Créer un paramètre"
+    create: "Le paramètre %{name} a été créé avec succès."
+    edit: "Mettre à jour un paramètre"
+    update: "Le paramètre %{name} a été mis à jour avec succès."
+    destroy: "Supprimer ce paramètre"
+    confirm_destroy: "Etes-vous sûr de vouloir supprimer ce paramètre?"
+    destroyed: "Le paramètre %{name} a été supprimé avec succès."
+    empty: "Aucun paramètre"
+    name: "Nom"
+    value: "Valeur"
+  type:
+    new: "Créer un type de playlist"
+    create: "Le type de playlist %{name} a été créé avec succès."
+    edit: "Mettre à jour un type de playlist"
+    update: "Le type de playlist %{name} a été mis à jour avec succès."
+    destroy: "Supprimer ce type de playlist"
+    confirm_destroy: "Etes-vous sûr de vouloir supprimer ce type de playlist?"
+    destroyed: "Le type de playlist %{name} a été supprimé avec succès."
+    empty: "Aucun type de playlist"
+    name: "Nom"
   artist:
     new: "Créer un artiste"
     create: "L'artiste %{name} a été créé avec succès."
     edit: "Mettre à jour un artiste"
     update: "L'artiste %{name} a été mis à jour avec succès."
-    destroy: "Supprimer cet utilisteur"
+    destroy: "Supprimer cet artiste"
     confirm_destroy: "Etes-vous sûr de vouloir supprimer cet artiste?"
     destroyed: "L'artiste %{name} a été supprimé avec succès."
     empty: "Aucun artiste"
@@ -66,7 +100,9 @@ fr:
     empty: "Aucune genre musical"
     name: "Nom"
     image: "Vignette"
+    visible: "Visible?"
   playlist:
+    show: "Voir la playlist"
     import: "Importer des playlists"
     new: "Créer une playlist"
     create: "La playlist %{name} a été créée avec succès."
@@ -78,13 +114,15 @@ fr:
     manage: "Gérer les titres"
     empty: "Aucune playlist"
     name: "Nom"
-    kind: "Genre musical"
+    kinds: "Genres musicaux"
+    types: "Type(s) de playlist"
     user: "Créateur"
     image: "Vignette"
     created_at: "Date de création"
     songs: "Titre(s)"
   song:
     import: "Importer des titres"
+    show: "Voir le titre"
     new: "Créer un titre"
     create: "Le titre %{name} a été créé avec succès."
     edit: "Mettre à jour un titre"
@@ -104,7 +142,6 @@ fr:
     created_at: "Date de création"
   album:
     manage: "Gérer les titres"
-    import: "Importer des albums"
     new: "Créer un album"
     create: "Le album %{name} a été créé avec succès."
     edit: "Mettre à jour un album"
@@ -119,7 +156,6 @@ fr:
     year: "Année"
     artist_id: "Artiste"
     image: "Vignette"
-    user_id: "Créateur"
     created_at: "Date de création"
   views:
     pagination:

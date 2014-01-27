@@ -32,17 +32,23 @@ class Song < ActiveRecord::Base
 
         infos = mp3.tag.empty? ? mp3.tag1 : mp3.tag 
         unless infos.empty?
-          new_song = Song.new(name: infos.title.capitalize, album: infos.album.capitalize, user: user)
+          new_song = Song.new(name: infos.title.capitalize, user: user)
 
           new_song.artist = Artist.find_or_create_by(name: infos.artist.downcase)
+
+          album = Album.find_or_create_by(name: infos.album.downcase)
 
           image = "public/temp/#{song.gsub('.mp3', '.jpg')}"
           new_song.image = File.exist?(image) ? File.open(image) : infos.image
 
           new_song.file = File.open("public/temp/#{song}")
 
-          song_exists = Song.where(name: new_song.name, album: new_song.album)
-          new_song.save! if song_exists.empty?
+          song_exists = Song.where(name: new_song.name)
+
+          if song_exists.empty?
+            new_song.save! 
+            new_song.albums << album
+          end
         end
       end
     rescue Exception => e

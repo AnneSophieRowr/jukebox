@@ -3,10 +3,6 @@
   .btn-group.pull-right
     = link_to new_playlist_path, :class => 'btn btn-default', :title => t('playlist.new') do
       %span.fa.fa-plus
-    = link_to '#', :class => 'btn btn-default import_btn', title: t('playlist.import') do
-      %span.fa.fa-download
-    = form_for :import, url: import_playlists_path, remote: true do |f|
-      = f.file_field 'file', accept: '.zip', style: 'display:none'
 
 #playlists.partial
   = render :partial => 'listing', :locals => {:playlists => @playlists}

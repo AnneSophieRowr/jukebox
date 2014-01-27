@@ -5,11 +5,6 @@ class AlbumsController < ApplicationController
     @albums = AlbumDecorator.decorate_collection(Album.all)
   end
 
-  def import
-    Album.import(params[:import][:file].tempfile, current_user)
-    render partial: 'listing', locals: {albums: AlbumDecorator.decorate_collection(Album.all)}
-  end
-
   def manage
   end
 
@@ -71,7 +66,7 @@ class AlbumsController < ApplicationController
   end
 
   def album_params
-    params.require(:album).permit(:name, :image, :year, :artist_id, :user_id)
+    params.require(:album).permit(:name, :image, :year, :artist_id)
   end
 
 end

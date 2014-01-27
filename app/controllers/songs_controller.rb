@@ -1,8 +1,12 @@
 class SongsController < ApplicationController
-  before_action :set_song, only: [:play, :edit, :update, :destroy]
+  before_action :set_song, only: [:play, :show, :edit, :update, :destroy]
 
   def index
     @songs = SongDecorator.decorate_collection(Song.all)
+  end
+
+  def show
+    @song = @song.decorate
   end
 
   def import
@@ -19,7 +23,7 @@ class SongsController < ApplicationController
   def search
     q = "%#{params[:q]}%"
     songs = Song.where("name like ? or artist_id in (select id from artists where name like ? )", q, q)
-    songs.collect! {|s| {artist: (s.artist.nil? ? "" : s.artist.name), album: s.decorate.albums, img: s.image.url(:thumb), title: s.name, song_id: s.id}}
+    songs.collect! {|s| {artist: (s.artist.nil? ? "" : s.artist.name), album: s.decorate.albums_view, img: s.image.url(:thumb), title: s.name, song_id: s.id}}
     render json: songs.to_json
   end
 

@@ -3,6 +3,7 @@
   .well
     = f.input :name
     = f.association :kinds, collection: kinds
+    = f.association :types, collection: types
     = f.input :image
     = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
 

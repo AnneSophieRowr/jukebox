@@ -10,8 +10,6 @@
         %th= t('song.name')
         %th= t('song.artist_id')
         %th= t('song.albums')
-        %th= t('song.duration')
-        %th= t('song.user')
         %th
     %tbody
       - songs.each do |song|
@@ -20,16 +18,16 @@
           %td= song.name
           %td= song.artist
           %td= song.albums
-          %td= song.duration
-          %td= song.user.decorate.name
           %td
-            = link_to play_song_path(song), :class => 'btn btn-default play', :title => t('helpers.words.play'), :src => song.file.url do
+            = link_to play_song_path(song), class: 'btn btn-default btn-sm play', title: t('helpers.words.play'), src: song.file.url do
               %span.fa.fa-play
-            = link_to '#', :class => 'btn btn-default pause', :title => t('helpers.words.pause') do
+            = link_to '#', class: 'btn btn-default btn-sm pause', title: t('helpers.words.pause') do
               %span.fa.fa-pause
-            = link_to edit_song_path(song), :class => 'btn btn-default', :title => t('song.edit') do
+            = link_to song, class: 'btn btn-default btn-sm', title: t('song.show') do
+              %span.fa.fa-eye
+            = link_to edit_song_path(song), class: 'btn btn-default btn-sm', title: t('song.edit') do
               %span.fa.fa-edit
-            = link_to song_path(song), :class => 'btn btn-default', :title => t('song.destroy'), method: :delete, data: { confirm: t('song.confirm_destroy') } do
+            = link_to song_path(song), class: 'btn btn-default btn-sm', title: t('song.destroy'), method: :delete, data: { confirm: t('song.confirm_destroy') } do
               %span.fa.fa-times
 
 

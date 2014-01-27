@@ -13,13 +13,14 @@
       Jukebox
 
   %body
+    - if current_user
+      = render :partial => 'shared/top_bar'
     .container
       .row
-        .col-md-12
+        .col-md-3
           - if current_user
-            = render :partial => 'shared/top_bar'
-      .row
-        .col-md-12
+            = render :partial => 'shared/left_menu'
+        .col-md-9
           - flash.each do |name, msg|
             %div{:class => "alert alert-#{name == :notice ? "success" : "danger"}"}
               %a.close{"data-dismiss" => "alert"} &#215;

@@ -5,7 +5,8 @@ fr:
       mark: '*'
     labels:
       defaults:
-        name: 'Nom'
+        name: "Nom"
+        value: "Valeur"
         image: "Vignette"
         artist_id: "Artiste"
       user:
@@ -14,7 +15,8 @@ fr:
         password: 'Mot de passe'
         password_confirmation: 'Confirmation du mot de passe'
       playlist:
-        kind_id: "Genre musical"
+        kinds: "Genre musical"
+        types: "Type de playlist"
       song:
         file: "Fichier"
         album: "Album"
@@ -22,4 +24,5 @@ fr:
         user_id: "Créateur"
       album:
         year: "Année"
-        user_id: "Créateur"
+      kind:
+        visible: "Visible?"

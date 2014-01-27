@@ -3,10 +3,6 @@
   .btn-group.pull-right
     = link_to new_album_path, :class => 'btn btn-default', :title => t('album.new') do
       %span.fa.fa-plus
-    = link_to '#', :class => 'btn btn-default import_btn', title: t('album.import') do
-      %span.fa.fa-download
-    = form_for :import, url: import_albums_path, remote: true do |f|
-      = f.file_field 'file', accept: '.zip', style: 'display:none'
 
 #albums.partial
   = render :partial => 'listing', :locals => {:albums => @albums}

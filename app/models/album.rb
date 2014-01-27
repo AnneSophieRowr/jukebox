@@ -5,10 +5,9 @@ class Album < ActiveRecord::Base
   has_many :albums_songs, order: :position, dependent: :destroy
   has_many :songs, through: :albums_songs
 
-  belongs_to :user
   belongs_to :artist
 
-  validates_presence_of :name, :user_id
+  validates_presence_of :name
 
   def add_song(song_id)
     as = AlbumsSong.new(album_id: self.id, song_id: song_id)

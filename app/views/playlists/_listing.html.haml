@@ -8,9 +8,7 @@
       %tr
         %th
         %th= t('playlist.name')
-        %th= t('playlist.kind')
-        %th= t('playlist.user')
-        %th= t('playlist.created_at')
+        %th= t('playlist.types')
         %th= t('playlist.songs')
         %th
     %tbody
@@ -18,20 +16,20 @@
         %tr
           %td.img= image_tag playlist.image_url(:thumb)
           %td= playlist.name
-          %td= playlist.kinds_name
-          %td= playlist.user.decorate.name
-          %td= playlist.created_at
+          %td= playlist.types
           %td= playlist.songs.size
           %td
-            = link_to play_playlist_path(playlist), :class => 'btn btn-default play', :title => t('helpers.words.play') do
+            = link_to play_playlist_path(playlist), :class => 'btn btn-default btn-sm play', :title => t('helpers.words.play') do
               %span.fa.fa-play
-            = link_to '#', :class => 'btn btn-default pause', :title => t('helpers.words.pause') do
+            = link_to '#', :class => 'btn btn-default btn-sm pause', :title => t('helpers.words.pause') do
               %span.fa.fa-pause
-            = link_to manage_playlist_path(playlist), :class => 'btn btn-default', :title => t('playlist.manage') do
+            = link_to playlist, class: 'btn btn-default btn-sm', title: t('playlist.show') do
+              %span.fa.fa-eye
+            = link_to manage_playlist_path(playlist), :class => 'btn btn-default btn-sm', :title => t('playlist.manage') do
               %span.fa.fa-music
-            = link_to edit_playlist_path(playlist), :class => 'btn btn-default', :title => t('playlist.edit') do
+            = link_to edit_playlist_path(playlist), :class => 'btn btn-default btn-sm', :title => t('playlist.edit') do
               %span.fa.fa-edit
-            = link_to playlist_path(playlist), :class => 'btn btn-default', :title => t('playlist.destroy'), method: :delete, data: { confirm: t('playlist.confirm_destroy') } do
+            = link_to playlist_path(playlist), :class => 'btn btn-default btn-sm', :title => t('playlist.destroy'), method: :delete, data: { confirm: t('playlist.confirm_destroy') } do
               %span.fa.fa-times
 
 

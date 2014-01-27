@@ -33,6 +33,10 @@ class PlaylistsController < ApplicationController
   def manage
   end
 
+  def show
+    @playlist = @playlist.decorate
+  end
+
   def new
     @playlist = Playlist.new
   end
@@ -45,7 +49,7 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       if @playlist.save
-        format.html { redirect_to playlists_path, notice: t('playlist.create', name: @playlist.name) }
+        format.html { redirect_to manage_playlist_path(@playlist), notice: t('playlist.create', name: @playlist.name) }
       else
         format.html { render action: 'new' }
       end
@@ -76,7 +80,7 @@ class PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:name, :image, :kind_id, :user_id, song_ids: [], kind_ids: [])
+    params.require(:playlist).permit(:name, :image, :kind_id, :user_id, song_ids: [], kind_ids: [], type_ids: [])
   end
 
 end

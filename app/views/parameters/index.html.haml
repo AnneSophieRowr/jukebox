@@ -1,0 +1,11 @@
+.bar-title
+  %h2.pull-left= t('model.parameters')
+  .btn-group.pull-right
+    = link_to new_parameter_path, :class => 'btn btn-default', :title => t('parameter.new') do
+      %span.fa.fa-plus
+
+#parameters.partial
+  = render :partial => 'listing', :locals => {:parameters => @parameters}
+
+
+

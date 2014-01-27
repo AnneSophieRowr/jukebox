@@ -12,3 +12,6 @@ User.create(  [
   {email: 'enora.oulchen@bpi.fr', password: 'password', last_name: 'Oulchen', first_name: 'Enora'}
   ]
 )
+
+Parameter.delete_all
+Parameter.create( name: 'playlist_delay', value: '30' )

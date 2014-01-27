@@ -1,0 +1,23 @@
+- if types.empty?
+  = t('type.empty')
+
+- else
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= t('type.name')
+        %th= t('type.playlists')
+        %th
+    %tbody
+      - types.each do |type|
+        %tr
+          %td= type.name
+          %td= type.playlists.count
+          %td
+            = link_to edit_type_path(type), :class => 'btn btn-default btn-sm', :title => t('type.edit') do
+              %span.fa.fa-edit
+            = link_to type_path(type), :class => 'btn btn-default btn-sm', :title => t('type.destroy'), method: :delete, data: { confirm: t('type.confirm_destroy') } do
+              %span.fa.fa-times
+
+

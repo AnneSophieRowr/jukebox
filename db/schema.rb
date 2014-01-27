@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123134233) do
+ActiveRecord::Schema.define(version: 20140127142426) do
 
   create_table "albums", force: true do |t|
     t.string   "name",       null: false
     t.string   "image"
     t.integer  "year"
     t.integer  "artist_id"
-    t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,15 +40,23 @@ ActiveRecord::Schema.define(version: 20140123134233) do
   end
 
   create_table "kinds", force: true do |t|
-    t.string   "name",       null: false
+    t.string   "name",                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
+    t.boolean  "visible",    default: false
   end
 
   create_table "kinds_playlists", force: true do |t|
     t.integer "kind_id"
     t.integer "playlist_id"
+  end
+
+  create_table "parameters", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "value",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "playlists", force: true do |t|
@@ -66,6 +73,11 @@ ActiveRecord::Schema.define(version: 20140123134233) do
     t.integer "position"
   end
 
+  create_table "playlists_types", force: true do |t|
+    t.integer "playlist_id"
+    t.integer "type_id"
+  end
+
   create_table "songs", force: true do |t|
     t.string   "name",       null: false
     t.string   "image"
@@ -75,6 +87,10 @@ ActiveRecord::Schema.define(version: 20140123134233) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "artist_id"
+  end
+
+  create_table "types", force: true do |t|
+    t.string "name", null: false
   end
 
   create_table "users", force: true do |t|

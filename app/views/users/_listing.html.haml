@@ -15,8 +15,8 @@
           %td= user.name
           %td= user.email
           %td
-            = link_to edit_user_path(user), :class => 'btn btn-default', :title => t('user.edit').html_safe do
+            = link_to edit_user_path(user), :class => 'btn btn-default btn-sm', :title => t('user.edit').html_safe do
               %span.fa.fa-edit
-            = link_to user_path(user), :class => 'btn btn-default', :title => t('user.destroy').html_safe, method: :delete, data: { confirm: t('user.confirm_destroy').html_safe } do
+            = link_to user_path(user), :class => 'btn btn-default btn-sm', :title => t('user.destroy').html_safe, method: :delete, data: { confirm: t('user.confirm_destroy').html_safe } do
               %span.fa.fa-times
 

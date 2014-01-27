@@ -1,21 +1,13 @@
-.navbar.navbar-default
-  .navbar-header
-    = link_to playlists_path, class: 'navbar-brand' do
-      = image_tag 'logo_brand.png'
+.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      = link_to 'JUKEBOX', songs_path, class: 'navbar-brand'
 
-  .collapse.navbar-collapse.navbar-ex1-collapse
-    %ul.nav.navbar-nav
-      %li= link_to t('model.playlists'), playlists_path
-      %li= link_to t('model.songs'), songs_path
-      %li= link_to t('model.albums'), albums_path
-      %li= link_to t('model.kinds'), kinds_path
-      %li= link_to t('model.artists'), artists_path
-      %li= link_to t('model.users'), users_path
-    
-    %ul.nav.navbar-nav.pull-right
-      %li= link_to current_user.name, edit_user_path(current_user)
-      %li.pull-right
-        = link_to destroy_user_session_path, method: :delete, alt: t('devise.logout').html_safe do
-          = image_tag "exclamation.png", alt: t('devise.logout').html_safe, title: t('devise.logout').html_safe, class: :destroy
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav.pull-right
+        %li= link_to current_user.name, edit_user_path(current_user)
+        %li.pull-right
+          = link_to destroy_user_session_path, method: :delete, alt: t('devise.logout').html_safe do
+            = image_tag "exclamation.png", alt: t('devise.logout').html_safe, title: t('devise.logout').html_safe, class: :destroy
 
 

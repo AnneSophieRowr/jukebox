@@ -1,0 +1,23 @@
+- if parameters.empty?
+  = t('parameter.empty')
+
+- else
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= t('parameter.name')
+        %th= t('parameter.value')
+        %th
+    %tbody
+      - parameters.each do |parameter|
+        %tr
+          %td= parameter.name
+          %td= parameter.value
+          %td
+            = link_to edit_parameter_path(parameter), :class => 'btn btn-default btn-sm', :title => t('parameter.edit') do
+              %span.fa.fa-edit
+            = link_to parameter_path(parameter), :class => 'btn btn-default btn-sm', :title => t('parameter.destroy'), method: :delete, data: { confirm: t('parameter.confirm_destroy') } do
+              %span.fa.fa-times
+
+

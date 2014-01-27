@@ -1,0 +1,11 @@
+.bar-title
+  %h2.pull-left= t('model.types')
+  .btn-group.pull-right
+    = link_to new_type_path, :class => 'btn btn-default', :title => t('type.new') do
+      %span.fa.fa-plus
+
+#types.partial
+  = render :partial => 'listing', :locals => {:types => @types}
+
+
+

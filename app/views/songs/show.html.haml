@@ -1,0 +1,33 @@
+.bar-title
+  %h2.pull-left= @song.name
+  .btn-group.pull-right
+    = link_to edit_song_path(@song), class: 'btn btn-default', title: t('song.edit') do
+      %span.fa.fa-edit
+    = link_to song_path(@song), class: 'btn btn-default', title: t('song.destroy'), method: :delete, data: { confirm: t('song.confirm_destroy') } do
+      %span.fa.fa-trash-o
+
+
+.row
+  .col-md-3
+    = link_to '#', class: 'thumbnail' do
+      = image_tag @song.image_url
+
+  .col-md-9
+    .well
+      %dl.dl-horizontal
+        %dt= t('song.name')
+        %dd= @song.name
+        %dt= t('song.artist_id')
+        %dd= @song.artist
+        %dt= t('song.albums')
+        %dd= @song.albums
+        %dt= t('song.user')
+        %dd= @song.user
+        %dt= t('song.duration')
+        %dd= @song.duration
+        %dt= t('song.file')
+        %dd= @song.file
+        %dt= t('song.created_at')
+        %dd= @song.created_at
+
+= link_to t('helpers.submit.back'), songs_path, :class => 'btn btn-default'
