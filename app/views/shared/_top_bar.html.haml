@@ -6,8 +6,8 @@
     .collapse.navbar-collapse
       %ul.nav.navbar-nav.pull-right
         %li= link_to current_user.name, edit_user_path(current_user)
-        %li.pull-right
-          = link_to destroy_user_session_path, method: :delete, alt: t('devise.logout').html_safe do
-            = image_tag "exclamation.png", alt: t('devise.logout').html_safe, title: t('devise.logout').html_safe, class: :destroy
+        %li.pull-right.destroy
+          = link_to destroy_user_session_path, method: :delete, alt: t('devise.logout') do
+            = image_tag "exclamation.png", alt: t('devise.logout').html_safe, title: t('devise.logout'), class: :destroy
 
 

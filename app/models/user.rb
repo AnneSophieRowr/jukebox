@@ -3,4 +3,6 @@ class User < ActiveRecord::Base
   default_scope { order('last_name') }
   has_many :playlists
   has_many :songs
+
+  validates_presence_of :last_name, :first_name, :email, :password, :password_confirmation
 end

@@ -2,20 +2,28 @@ fr:
   activerecord:
     errors:
       models: 
-        song:
-          attributes:
-            name:
-              blank: "Le nom ne doit pas être vide"
-            file:
-              blank: "Le fichier ne doit pas être vide"
-        kind:
-          attributes:
-            name:
-              taken: "Ce nom est déjà utilisé"
-        artist:
+        playlist:
           attributes:
             name:
               blank: "Veuillez renseigner le nom"
+        song:
+          attributes:
+            name:
+              blank: "Veuillez renseigner le nom"
+            file:
+              blank: "Le fichier ne doit pas être vide"
+        album:
+          attributes:
+            name:
+              blank: "Veuillez renseigner le nom"
+        kind:
+          attributes:
+            name:
+              blank: "Veuillez renseigner le nom"
+        artist:
+          attributes:
+            name:
+              blank: "Le nom ne doit pas être vide"
         parameter:
           attributes:
             name:
@@ -28,12 +36,18 @@ fr:
               blank: "Veuillez renseigner le nom"
         user:
           attributes:
+            last_name:
+              blank: "veuillez renseigner le nom de famille"
+            first_name:
+              blank: "Veuillez renseigner le prénom"
             email:
               taken: "Cet email est déjà pris"
+              blank: "Veuillez renseigner l'email"
             password:
               blank: "Veuillez renseigner le mot de passe"
               too_short: "Le mot de passe est trop court"
             password_confirmation:
+              blank: "Veuillez confirmer le mot de passe"
               confirmation: "Veuillez confirmer le mot de passe"
   model:
     users: "Utilisateur(s)"

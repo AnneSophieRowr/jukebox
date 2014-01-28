@@ -12,6 +12,7 @@ class Playlist < ActiveRecord::Base
   has_many :playlists_types, dependent: :destroy
   has_many :types, through: :playlists_types
 
+  validates_presence_of :name
 
   def add_song(song_id)
     ps = PlaylistsSong.new(playlist_id: self.id, song_id: song_id)

@@ -1,12 +1,14 @@
-.bar-title
-  %h2.pull-left= t('model.songs')
-  .btn-group.pull-right
-    = link_to new_song_path, :class => 'btn btn-default', :title => t('song.new') do
-      %span.fa.fa-plus
-    = link_to '#', :class => 'btn btn-default import_btn', title: t('song.import') do
-      %span.fa.fa-download
-    = form_for :import, url: import_songs_path, remote: true do |f|
-      = f.file_field 'file', accept: '.zip', style: 'display:none'
+.row.bar
+  .col-md-8
+    .title.pull-left= t('model.songs')
+  .col-md-4
+    .btn-group.pull-right
+      = link_to new_song_path, :class => 'btn btn-default', :title => t('song.new') do
+        %span.fa.fa-plus
+      = link_to '#', :class => 'btn btn-default import_btn', title: t('song.import') do
+        %span.fa.fa-download
+      = form_for :import, url: import_songs_path, remote: true do |f|
+        = f.file_field 'file', accept: '.zip', style: 'display:none'
 
 #songs.partial
   = render :partial => 'listing', :locals => {:songs => @songs}
