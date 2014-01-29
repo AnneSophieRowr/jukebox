@@ -1,6 +1,8 @@
 fr:
   activerecord:
     errors:
+      messages:
+        extension_white_list_error: "Le format n'est pas bon"
       models: 
         playlist:
           attributes:
