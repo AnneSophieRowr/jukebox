@@ -2,7 +2,7 @@ class SongsController < ApplicationController
   before_action :set_song, only: [:play, :show, :edit, :update, :destroy]
 
   def index
-    @songs = SongDecorator.decorate_collection(Song.all)
+    @songs = Kaminari.paginate_array(SongDecorator.decorate_collection(Song.all)).page(params[:page])
   end
 
   def show
@@ -11,7 +11,8 @@ class SongsController < ApplicationController
 
   def import
     Song.import(params[:import][:file].tempfile, current_user)
-    render partial: 'listing', locals: {songs: SongDecorator.decorate_collection(Song.all)}
+    songs = Kaminari.paginate_array(SongDecorator.decorate_collection(Song.all)).page(params[:page])
+    render partial: 'listing', locals: {songs: songs}
   end
 
   def play

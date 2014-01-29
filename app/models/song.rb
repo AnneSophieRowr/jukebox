@@ -28,27 +28,32 @@ class Song < ActiveRecord::Base
       songs = Dir.entries("public/temp/").reject! {|s| ['.', '..'].include? s or !s.include? 'mp3'}
 
       songs.each do |song|
-        mp3 = Mp3Info.open("public/temp/#{song}") 
+        begin
+          mp3 = Mp3Info.open("public/temp/#{song}") 
 
-        infos = mp3.tag.empty? ? mp3.tag1 : mp3.tag 
-        unless infos.empty?
-          new_song = Song.new(name: infos.title.capitalize, user: user)
+          infos = mp3.tag.empty? ? mp3.tag1 : mp3.tag 
+          unless infos.empty?
+            new_song = Song.new(name: infos.title.capitalize, user: user)
 
-          new_song.artist = Artist.find_or_create_by(name: infos.artist.downcase)
+            new_song.artist = Artist.find_or_create_by(name: infos.artist.downcase)
 
-          album = Album.find_or_create_by(name: infos.album.downcase)
+            album = Album.find_or_create_by(name: infos.album.downcase)
+          
+            image = "public/temp/#{song.gsub('.mp3', '.jpg')}"
+            new_song.image = File.exist?(image) ? File.open(image) : infos.image
 
-          image = "public/temp/#{song.gsub('.mp3', '.jpg')}"
-          new_song.image = File.exist?(image) ? File.open(image) : infos.image
+            new_song.file = File.open("public/temp/#{song}")
 
-          new_song.file = File.open("public/temp/#{song}")
+            song_exists = Song.where(name: new_song.name)
 
-          song_exists = Song.where(name: new_song.name)
-
-          if song_exists.empty?
-            new_song.save! 
-            new_song.albums << album
+            if song_exists.empty?
+              new_song.save! 
+              new_song.albums << album
+            end
           end
+        rescue Exception => e
+          puts song
+          puts e.inspect
         end
       end
     rescue Exception => e

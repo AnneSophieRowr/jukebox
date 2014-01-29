@@ -9,6 +9,6 @@
 #playlists.partial
   = render :partial => 'listing', :locals => {:playlists => @playlists}
 
-.player
+- content_for :player do
   = render :partial => 'player'
 

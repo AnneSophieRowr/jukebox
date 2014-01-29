@@ -2,7 +2,7 @@ class ParametersController < ApplicationController
   before_action :set_parameter, only: [:show, :edit, :update, :destroy]
 
   def index
-    @parameters = Parameter.all
+    @parameters = Kaminari.paginate_array(ParameterDecorator.decorate_collection(Parameter.all)).page(params[:page])
   end
 
   def new

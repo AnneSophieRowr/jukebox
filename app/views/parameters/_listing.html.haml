@@ -2,6 +2,11 @@
   = t('parameter.empty')
 
 - else
+  .row.paginate
+    .col-md-8
+      = paginate parameters
+    .col-md-4
+      %p.pull-right= [parameters.total_count.to_s, t('model.parameters').downcase].join(" ")
 
   %table.table.table-striped
     %thead

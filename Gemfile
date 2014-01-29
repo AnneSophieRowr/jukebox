@@ -9,6 +9,7 @@ gem 'thin'
 
 gem 'simple_form'
 gem 'draper'
+gem 'kaminari'
 
 gem 'haml'
 gem 'sass-rails', '~> 4.0.0'

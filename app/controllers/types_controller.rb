@@ -2,7 +2,7 @@ class TypesController < ApplicationController
   before_action :set_type, only: [:show, :edit, :update, :destroy]
 
   def index
-    @types = Type.all
+    @types = Kaminari.paginate_array(TypeDecorator.decorate_collection(Type.all)).page(params[:page])
   end
 
   def new

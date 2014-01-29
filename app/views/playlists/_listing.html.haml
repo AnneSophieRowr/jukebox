@@ -2,6 +2,11 @@
   = t('playlist.empty')
 
 - else
+  .row.paginate
+    .col-md-8
+      = paginate playlists
+    .col-md-4
+      %p.pull-right= [playlists.total_count.to_s, t('model.playlists').downcase].join(" ")
 
   %table.table.table-striped
     %thead
@@ -19,17 +24,19 @@
           %td= playlist.types
           %td= playlist.songs.size
           %td
-            = link_to play_playlist_path(playlist), :class => 'btn btn-default btn-sm play', :title => t('helpers.words.play') do
-              %span.fa.fa-play
-            = link_to '#', :class => 'btn btn-default btn-sm pause', :title => t('helpers.words.pause') do
-              %span.fa.fa-pause
-            = link_to playlist, class: 'btn btn-default btn-sm', title: t('playlist.show') do
-              %span.fa.fa-eye
-            = link_to manage_playlist_path(playlist), :class => 'btn btn-default btn-sm', :title => t('playlist.manage') do
-              %span.fa.fa-music
-            = link_to edit_playlist_path(playlist), :class => 'btn btn-default btn-sm', :title => t('playlist.edit') do
-              %span.fa.fa-edit
-            = link_to playlist_path(playlist), :class => 'btn btn-default btn-sm', :title => t('playlist.destroy'), method: :delete, data: { confirm: t('playlist.confirm_destroy') } do
-              %span.fa.fa-times
+            .row
+              = link_to play_playlist_path(playlist), :class => 'btn btn-default btn-sm play', :title => t('helpers.words.play') do
+                %span.fa.fa-play
+              = link_to '#', :class => 'btn btn-default btn-sm pause', :title => t('helpers.words.pause') do
+                %span.fa.fa-pause
+              = link_to playlist, class: 'btn btn-default btn-sm', title: t('playlist.show') do
+                %span.fa.fa-eye
+              = link_to manage_playlist_path(playlist), :class => 'btn btn-default btn-sm', :title => t('playlist.manage') do
+                %span.fa.fa-music
+            .row
+              = link_to edit_playlist_path(playlist), :class => 'btn btn-default btn-sm', :title => t('playlist.edit') do
+                %span.fa.fa-edit
+              = link_to playlist_path(playlist), :class => 'btn btn-default btn-sm', :title => t('playlist.destroy'), method: :delete, data: { confirm: t('playlist.confirm_destroy') } do
+                %span.fa.fa-times
 
 

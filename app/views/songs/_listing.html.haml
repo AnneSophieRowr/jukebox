@@ -3,6 +3,12 @@
 
 - else
 
+  .row.paginate
+    .col-md-8
+      = paginate songs
+    .col-md-4
+      %p.pull-right= [songs.total_count.to_s, t('model.songs').downcase].join(" ")
+
   %table.table.table-striped
     %thead
       %tr
@@ -19,15 +25,17 @@
           %td= song.artist
           %td= song.albums
           %td
-            = link_to play_song_path(song), class: 'btn btn-default btn-sm play', title: t('helpers.words.play'), src: song.file.url do
-              %span.fa.fa-play
-            = link_to '#', class: 'btn btn-default btn-sm pause', title: t('helpers.words.pause') do
-              %span.fa.fa-pause
-            = link_to song, class: 'btn btn-default btn-sm', title: t('song.show') do
-              %span.fa.fa-eye
-            = link_to edit_song_path(song), class: 'btn btn-default btn-sm', title: t('song.edit') do
-              %span.fa.fa-edit
-            = link_to song_path(song), class: 'btn btn-default btn-sm', title: t('song.destroy'), method: :delete, data: { confirm: t('song.confirm_destroy') } do
-              %span.fa.fa-times
+            .row
+              = link_to play_song_path(song), class: 'btn btn-default btn-sm play', title: t('helpers.words.play'), src: song.file.url do
+                %span.fa.fa-play
+              = link_to '#', class: 'btn btn-default btn-sm pause', title: t('helpers.words.pause') do
+                %span.fa.fa-pause
+              = link_to song, class: 'btn btn-default btn-sm', title: t('song.show') do
+                %span.fa.fa-eye
+            .row
+              = link_to edit_song_path(song), class: 'btn btn-default btn-sm', title: t('song.edit') do
+                %span.fa.fa-edit
+              = link_to song_path(song), class: 'btn btn-default btn-sm', title: t('song.destroy'), method: :delete, data: { confirm: t('song.confirm_destroy') } do
+                %span.fa.fa-times
 
 

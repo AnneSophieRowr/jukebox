@@ -2,6 +2,11 @@
   = t('artist.empty')
 
 - else
+  .row.paginate
+    .col-md-8
+      = paginate artists
+    .col-md-4
+      %p.pull-right= [artists.total_count.to_s, t('model.artists').downcase].join(" ")
 
   %table.table.table-striped
     %thead

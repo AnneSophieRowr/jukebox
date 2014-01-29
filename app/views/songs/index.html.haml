@@ -13,6 +13,6 @@
 #songs.partial
   = render :partial => 'listing', :locals => {:songs => @songs}
 
-.player
+- content_for :player do
   = render :partial => 'player'
 

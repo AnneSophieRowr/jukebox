@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
   before_action :set_artist, only: [:play, :edit, :update, :destroy]
 
   def index
-    @artists = ArtistDecorator.decorate_collection(Artist.all)
+    @artists = Kaminari.paginate_array(ArtistDecorator.decorate_collection(Artist.all)).page(params[:page])
   end
 
   def new

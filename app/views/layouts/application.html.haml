@@ -20,7 +20,7 @@
         - if current_user
           .col-md-3
             - if current_user
-              = render :partial => 'shared/left_menu'
+              = render partial: 'shared/left_menu'
           .col-md-9
             - flash.each do |name, msg|
               %div{:class => "alert alert-#{name == :notice ? "success" : "danger"}"}
@@ -30,4 +30,8 @@
         - else
           .col-md-12
             = yield
+    - if current_user
+      .container
+        .row
+          = content_for :player
 

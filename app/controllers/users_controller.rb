@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = UserDecorator.decorate_collection(User.all)
+    @users = Kaminari.paginate_array(UserDecorator.decorate_collection(User.all)).page(params[:page])
   end
 
   def new

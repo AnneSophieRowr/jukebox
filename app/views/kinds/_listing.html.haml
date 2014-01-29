@@ -2,6 +2,11 @@
   = t('kind.empty')
 
 - else
+  .row.paginate
+    .col-md-8
+      = paginate kinds
+    .col-md-4
+      %p.pull-right= [kinds.total_count.to_s, t('model.kinds').downcase].join(" ")
 
   %table.table.table-striped
     %thead

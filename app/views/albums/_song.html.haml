@@ -3,7 +3,7 @@
     = image_tag song.image_url(:thumb)
   .media-body
     %h4.media-heading= song.name
-    = song.artist.name unless song.artist.nil?
+    = song.decorate.artist
     %br
     = song.decorate.albums
   .media-actions

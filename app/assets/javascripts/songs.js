@@ -3,7 +3,10 @@ $(document).ready(function(){
   $("#song_playlist_ids, #song_album_ids").multiselect({
     includeSelectAllOption: true,
     selectAllText: 'Tout sélectionner',
-    nonSelectedText: 'Aucune sélection'
+    nonSelectedText: 'Aucune sélection',
+    enableFiltering: true, 
+    enableCaseInsensitiveFiltering: true,
+    maxHeight: 300
   });
 
   $('#songs .pause').hide();

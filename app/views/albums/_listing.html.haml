@@ -2,6 +2,11 @@
   = t('album.empty')
 
 - else
+  .row.paginate
+    .col-md-8
+      = paginate albums
+    .col-md-4
+      %p.pull-right= [albums.total_count.to_s, t('model.albums').downcase].join(" ")
 
   %table.table.table-striped
     %thead
