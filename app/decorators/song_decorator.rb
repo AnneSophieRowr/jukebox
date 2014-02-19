@@ -17,4 +17,8 @@ class SongDecorator < Draper::Decorator
     h.link_to object.user.decorate.name.capitalize, h.edit_user_path(object.user) unless object.user.nil?
   end
 
+  def duration
+    Time.at(object.duration).gmtime.strftime('%M:%S') unless object.duration.nil?
+  end
+
 end

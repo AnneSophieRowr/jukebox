@@ -1,6 +1,8 @@
-.bar-title
+%legend.row
   %h2.pull-left= @playlist.name
   .btn-group.pull-right
+    = link_to manage_playlist_path(@playlist), :class => 'btn btn-default', :title => t('playlist.manage') do
+      %span.fa.fa-music
     = link_to edit_playlist_path(@playlist), class: 'btn btn-default', title: t('playlist.edit') do
       %span.fa.fa-edit
     = link_to playlist_path(@playlist), class: 'btn btn-default', title: t('playlist.destroy'), method: :delete, data: { confirm: t('playlist.confirm_destroy') } do
@@ -26,4 +28,4 @@
         %dt= t('playlist.songs')
         %dd= @playlist.songs.count
 
-= link_to t('helpers.submit.back'), playlists_path, :class => 'btn btn-default'
+= link_to t('helpers.submit.back'), :back, :class => 'btn btn-default'

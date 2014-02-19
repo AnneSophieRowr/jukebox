@@ -1,8 +1,9 @@
 fr:
+  errors:
+    messages:
+      extension_white_list_error: "Le format n'est pas bon"
   activerecord:
     errors:
-      messages:
-        extension_white_list_error: "Le format n'est pas bon"
       models: 
         playlist:
           attributes:
@@ -82,6 +83,7 @@ fr:
     empty: "Aucun type de playlist"
     name: "Nom"
   artist:
+    show: "Voir l'artiste"
     new: "Créer un artiste"
     create: "L'artiste %{name} a été créé avec succès."
     edit: "Mettre à jour un artiste"
@@ -93,6 +95,7 @@ fr:
     name: "Nom"
     description: "Description"
     image: "Image"
+    songs: "Titre(s)"
   user:
     new: "Créer un utilisateur"
     create: "L'utilisateur %{name} a été créé avec succès."
@@ -158,6 +161,7 @@ fr:
     created_at: "Date de création"
   album:
     manage: "Gérer les titres"
+    show: "Voir l'album"
     new: "Créer un album"
     create: "Le album %{name} a été créé avec succès."
     edit: "Mettre à jour un album"

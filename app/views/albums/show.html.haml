@@ -1,0 +1,25 @@
+%legend.row
+  %h2.pull-left= @album.name
+  .btn-group.pull-right
+    = link_to manage_album_path(@album), :class => 'btn btn-default', :title => t('album.manage') do
+      %span.fa.fa-music
+    = link_to edit_album_path(@album), class: 'btn btn-default', title: t('album.edit') do
+      %span.fa.fa-edit
+    = link_to album_path(@album), class: 'btn btn-default', title: t('album.destroy'), method: :delete, data: { confirm: t('album.confirm_destroy') } do
+      %span.fa.fa-trash-o
+
+
+.row
+  .col-md-3
+    = link_to '#', class: 'thumbnail' do
+      = image_tag @album.image_url
+
+  .col-md-9
+    .well
+      %dl.dl-horizontal
+        %dt= t('album.name')
+        %dd= @album.name
+        %dt= t('album.songs')
+        %dd= @album.songs.count
+
+= link_to t('helpers.submit.back'), :back, :class => 'btn btn-default'

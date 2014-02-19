@@ -3,7 +3,7 @@
   .well
     = f.input :name
     = f.input :year
-    = f.input :artist_id, collection: artists, selected: (@album.artist.id unless @album.artist.nil?), prompt: t('helpers.words.choose')
+    = f.input :artist_id, collection: artists, selected: (@album.artist.id unless @album.artist.nil?), prompt: t('helpers.words.choose'), as: :with_link
     = f.input :image
 
   .form_actions

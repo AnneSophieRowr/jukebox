@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:play, :show, :edit, :update, :destroy]
+  before_action :fix_duration_params, only: [:create, :update]
 
   def index
     @songs = Kaminari.paginate_array(SongDecorator.decorate_collection(Song.all)).page(params[:page])
@@ -40,7 +41,7 @@ class SongsController < ApplicationController
 
     respond_to do |format|
       if @song.save
-        format.html { redirect_to songs_path, notice: t('song.create', name: @song.name) }
+        format.html { redirect_to @song, notice: t('song.create', name: @song.name) }
       else
         format.html { render action: 'new' }
       end
@@ -50,7 +51,7 @@ class SongsController < ApplicationController
   def update
     respond_to do |format|
       if @song.update(song_params)
-        format.html { redirect_to songs_path, notice: t('song.update', name: @song.name) }
+        format.html { redirect_to @song, notice: t('song.update', name: @song.name) }
       else
         format.html { render action: 'edit' }
       end
@@ -72,6 +73,15 @@ class SongsController < ApplicationController
 
   def song_params
     params.require(:song).permit(:name, :image, :file, :artist_id, :duration, :user_id, playlist_ids: [], album_ids: [])
+  end
+
+  def fix_duration_params
+    unless params[:song][:duration].empty?
+      time = Time.parse("00:#{params[:song][:duration]}")
+      duration = time.min*60 + time.sec
+      puts duration
+      params[:song].merge!({'duration' => duration})
+    end
   end
 
 end

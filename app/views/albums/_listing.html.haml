@@ -26,11 +26,15 @@
           %td= album.year
           %td= album.artist
           %td
-            = link_to manage_album_path(album), :class => 'btn btn-default btn-sm', :title => t('album.manage') do
-              %span.fa.fa-music
-            = link_to edit_album_path(album), :class => 'btn btn-default btn-sm', :title => t('album.edit') do
-              %span.fa.fa-edit
-            = link_to album_path(album), :class => 'btn btn-default btn-sm', :title => t('album.destroy'), method: :delete, data: { confirm: t('album.confirm_destroy') } do
-              %span.fa.fa-times
+            .row
+              = link_to album, class: 'btn btn-default btn-sm', title: t('album.show') do
+                %span.fa.fa-eye
+              = link_to manage_album_path(album), :class => 'btn btn-default btn-sm', :title => t('album.manage') do
+                %span.fa.fa-music
+            .row
+              = link_to edit_album_path(album), :class => 'btn btn-default btn-sm', :title => t('album.edit') do
+                %span.fa.fa-edit
+              = link_to album_path(album), :class => 'btn btn-default btn-sm', :title => t('album.destroy'), method: :delete, data: { confirm: t('album.confirm_destroy') } do
+                %span.fa.fa-times
 
 

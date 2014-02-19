@@ -59,7 +59,7 @@ class PlaylistsController < ApplicationController
   def update
     respond_to do |format|
       if @playlist.update(playlist_params)
-        format.html { redirect_to playlists_path, notice: t('playlist.update', name: @playlist.name) }
+        format.html { redirect_to @playlist, notice: t('playlist.update', name: @playlist.name) }
       else
         format.html { render action: 'edit' }
       end

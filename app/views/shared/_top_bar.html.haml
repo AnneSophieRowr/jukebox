@@ -4,6 +4,8 @@
       = link_to 'JUKEBOX', songs_path, class: 'navbar-brand'
 
     .collapse.navbar-collapse
+      %form.navbar-form.navbar-left
+        = text_field_tag :q, '',  class: 'form-control searchbar', placeholder: 'Recherche...'
       %ul.nav.navbar-nav.pull-right
         %li= link_to current_user.name, edit_user_path(current_user)
         %li.pull-right.destroy

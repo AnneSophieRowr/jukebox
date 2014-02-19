@@ -8,3 +8,5 @@
 %ul.media-list#sortable_songs{url: sort_playlist_path(@playlist)}
   - @playlist.playlists_songs.each do |ps|
     = render partial: 'song', locals: {song: ps.song, playlists_song: ps}
+
+= link_to t('helpers.submit.back'), :back, :class => 'btn btn-default'

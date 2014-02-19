@@ -1,4 +1,4 @@
-.bar-title
+%legend.row
   %h2.pull-left= @song.name
   .btn-group.pull-right
     = link_to edit_song_path(@song), class: 'btn btn-default', title: t('song.edit') do
@@ -30,4 +30,4 @@
         %dt= t('song.created_at')
         %dd= @song.created_at
 
-= link_to t('helpers.submit.back'), songs_path, :class => 'btn btn-default'
+= link_to t('helpers.submit.back'), :back, :class => 'btn btn-default'

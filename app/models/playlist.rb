@@ -1,4 +1,5 @@
 class Playlist < ActiveRecord::Base
+  include Searchable
 
   mount_uploader :image, ImageUploader
 
@@ -19,12 +20,17 @@ class Playlist < ActiveRecord::Base
     ps.save!
   end
 
+  def details
+    p = self.decorate
+    details = "#{songs.count} titre(s)"
+    details =  "#{p.types} - #{details}" unless p.types.empty?
+    return details
+  end
+
   require 'zip'
   require 'mp3info'
   def self.import(tempfile, user)
-    
     begin
-
       temp_path = 'public/temp'
 
       # Extract directories (structure)

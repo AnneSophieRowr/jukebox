@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+  // Timepicker
+  $('#pick_duration').datetimepicker();
+
+  // Multiselect
   $("#song_playlist_ids, #song_album_ids, #song_artist_id").multiselect({
     includeSelectAllOption: true,
     selectAllText: 'Tout sélectionner',
@@ -9,6 +13,7 @@ $(document).ready(function(){
     maxHeight: 300
   });
 
+  // Player
   $('#songs .pause').hide();
 
   $('#songs .play').on('click', function() {

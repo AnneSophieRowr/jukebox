@@ -2,8 +2,8 @@
 
   .well
     = f.input :name
-    = f.association :kinds, collection: kinds
-    = f.association :types, collection: types
+    = f.association :kinds, collection: kinds, as: :with_link, input_html: {multiple: 'multiple'}
+    = f.association :types, collection: types, as: :with_link, input_html: {multiple: 'multiple'}
     = f.input :image
     = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
 

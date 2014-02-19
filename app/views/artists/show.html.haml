@@ -1,0 +1,25 @@
+%legend.row
+  %h2.pull-left= @artist.name
+  .btn-group.pull-right
+    = link_to edit_artist_path(@artist), class: 'btn btn-default', title: t('artist.edit') do
+      %span.fa.fa-edit
+    = link_to artist_path(@artist), class: 'btn btn-default', title: t('artist.destroy'), method: :delete, data: { confirm: t('artist.confirm_destroy') } do
+      %span.fa.fa-trash-o
+
+
+.row
+  .col-md-3
+    = link_to '#', class: 'thumbnail' do
+      = image_tag @artist.image_url
+
+  .col-md-9
+    .well
+      %dl.dl-horizontal
+        %dt= t('artist.name')
+        %dd= @artist.name
+        %dt= t('artist.description')
+        %dd= @artist.description
+        %dt= t('artist.songs')
+        %dd= @artist.songs.count
+
+= link_to t('helpers.submit.back'), :back, :class => 'btn btn-default'

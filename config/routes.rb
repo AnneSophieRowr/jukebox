@@ -4,6 +4,8 @@ Jukebox::Application.routes.draw do
 
   root 'songs#index'
 
+  get 'search', to: 'search#search', as: :search
+
   resources :artists, :playlists_songs, :albums_songs, :parameters, :types
 
   resources :albums do

@@ -1,4 +1,5 @@
 class Song < ActiveRecord::Base
+  include Searchable
 
   mount_uploader :image, ImageUploader
   mount_uploader :file, FileUploader
@@ -13,6 +14,12 @@ class Song < ActiveRecord::Base
   has_many :albums, through: :albums_songs
 
   validates_presence_of :file, :name
+
+  def details
+    details = self.decorate.albums_view
+    details = "#{artist.decorate.name} - #{details}" unless artist.nil?
+    return details
+  end
 
   require 'zip'
   require 'mp3info'

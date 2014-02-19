@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  before_action :set_album, only: [:sort, :manage, :add_song, :edit, :update, :destroy]
+  before_action :set_album, only: [:sort, :manage, :add_song, :show, :edit, :update, :destroy]
 
   def index
     @albums = Kaminari.paginate_array(AlbumDecorator.decorate_collection(Album.all)).page(params[:page])
@@ -35,7 +35,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to albums_path, notice: t('album.create', name: @album.name) }
+        format.html { redirect_to @album, notice: t('album.create', name: @album.name) }
       else
         format.html { render action: 'new' }
       end
@@ -45,7 +45,7 @@ class AlbumsController < ApplicationController
   def update
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to albums_path, notice: t('album.update', name: @album.name) }
+        format.html { redirect_to @album, notice: t('album.update', name: @album.name) }
       else
         format.html { render action: 'edit' }
       end
