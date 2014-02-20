@@ -67,7 +67,7 @@ class PlaylistsController < ApplicationController
   end
 
   def destroy
-  name = @playlist.name
+    name = @playlist.name
     @playlist.destroy
       respond_to do |format|
       format.html { redirect_to playlists_url, notice: t('playlist.destroyed', name: name) }
@@ -80,7 +80,7 @@ class PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:name, :image, :kind_id, :user_id, song_ids: [], kind_ids: [], type_ids: [])
+    params.require(:playlist).permit(:name, :image, :description, :kind_id, :user_id, song_ids: [], kind_ids: [], type_ids: [])
   end
 
 end

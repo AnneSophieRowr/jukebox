@@ -8,11 +8,11 @@ $(document).ready(function(){
     $(this).parent().parent().hide();
   });
 
-  $('li.media')
-    .on('mouseover', function() {
+  $('.media-list')
+    .on('mouseover', '.media', function() {
       $(this).children('.media-actions').css("visibility","visible");
     })
-    .on('mouseout', function() {
+    .on('mouseout', '.media', function() {
       $(this).children('.media-actions').css("visibility","hidden");
   });
 

@@ -13,6 +13,8 @@ class Playlist < ActiveRecord::Base
   has_many :playlists_types, dependent: :destroy
   has_many :types, through: :playlists_types
 
+  has_many :records, as: :recordable
+
   validates_presence_of :name
 
   def add_song(song_id)

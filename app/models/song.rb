@@ -13,6 +13,8 @@ class Song < ActiveRecord::Base
   has_many :albums_songs, order: :position, dependent: :destroy
   has_many :albums, through: :albums_songs
 
+  has_many :records, as: :recordable
+
   validates_presence_of :file, :name
 
   def details

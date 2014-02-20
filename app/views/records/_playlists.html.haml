@@ -1,0 +1,16 @@
+.row
+  .col-lg-9
+    %canvas#chart{:width => 450, :height => 400}
+  .col-lg-3
+    .btn-group-vertical.stats{'data-toggle' => 'buttons'}
+      %label.btn.btn-primary.active
+        = radio_button_tag 'total', '', true, url: chart_data_records_path(stat: 'total', type: 'Playlist')
+        Total
+      %label.btn.btn-primary
+        = radio_button_tag 'kind', '', false, url: chart_data_records_path(stat: 'kind', type: 'Playlist')
+        Genre
+      %label.btn.btn-primary
+        = radio_button_tag 'time', '', false, url: chart_data_records_path(stat: 'time', type: 'Playlist')
+        Temps d'écoute
+
+      

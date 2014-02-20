@@ -1,0 +1,14 @@
+%legend
+  %h1 Statistiques
+
+%ul#stats_tab.nav.nav-tabs
+  %li.active
+    = link_to 'Playlists', '#playlists', 'data-toggle' => "tab"
+  %li
+    = link_to 'Titres', '#songs', 'data-toggle' => "tab"
+
+#stats.tab-content
+  #playlists.tab-pane.active.in
+    = render partial: 'playlists', locales: {records: @playlists_total}
+  #songs.tab-pane
+    = render partial: 'songs', locales: {records: @songss_total}

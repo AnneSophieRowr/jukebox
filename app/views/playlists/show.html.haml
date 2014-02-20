@@ -19,6 +19,8 @@
       %dl.dl-horizontal
         %dt= t('playlist.name')
         %dd= @playlist.name
+        %dt= t('playlist.description')
+        %dd= @playlist.description
         %dt= t('playlist.user')
         %dd= @playlist.user
         %dt= t('playlist.kinds')
@@ -27,5 +29,7 @@
         %dd= @playlist.types
         %dt= t('playlist.songs')
         %dd= @playlist.songs.count
+        %dt= t('records.listened')
+        %dd= @playlist.records.count
 
 = link_to t('helpers.submit.back'), :back, :class => 'btn btn-default'

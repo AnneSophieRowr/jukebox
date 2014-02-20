@@ -61,6 +61,10 @@ fr:
     parameters: "Paramètre(s)"
     types: "Type(s) de playlists"
     albums: "Album(s)"
+    records: "Statistique(s)"
+  records:
+    empty: "Aucune donnée"
+    listened: "Nombre d'écoutes"
   parameter:
     new: "Créer un paramètre"
     create: "Le paramètre %{name} a été créé avec succès."

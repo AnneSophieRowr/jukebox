@@ -8,6 +8,12 @@ Jukebox::Application.routes.draw do
 
   resources :artists, :playlists_songs, :albums_songs, :parameters, :types
 
+  resources :records do
+    collection do
+      get :chart_data
+    end
+  end
+
   resources :albums do
     member do
       get :manage
@@ -29,6 +35,7 @@ Jukebox::Application.routes.draw do
 
 
   resources :songs do
+    resources :records
     get :play, on: :member
     collection do 
       get :search
@@ -37,6 +44,7 @@ Jukebox::Application.routes.draw do
   end
 
   resources :playlists do
+    resources :records
     member do 
       get :play
       get :manage
