@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140220123805) do
+ActiveRecord::Schema.define(version: 20140224102054) do
 
   create_table "albums", force: true do |t|
     t.string   "name",       null: false
@@ -82,7 +82,6 @@ ActiveRecord::Schema.define(version: 20140220123805) do
   create_table "records", force: true do |t|
     t.integer "recordable_id",   null: false
     t.string  "recordable_type", null: false
-    t.string  "kind"
     t.time    "start_time"
     t.time    "end_time"
   end
