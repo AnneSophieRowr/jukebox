@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224102054) do
+ActiveRecord::Schema.define(version: 20140225095323) do
 
   create_table "albums", force: true do |t|
     t.string   "name",       null: false
@@ -80,10 +80,11 @@ ActiveRecord::Schema.define(version: 20140224102054) do
   end
 
   create_table "records", force: true do |t|
-    t.integer "recordable_id",   null: false
-    t.string  "recordable_type", null: false
-    t.time    "start_time"
-    t.time    "end_time"
+    t.integer  "recordable_id",   null: false
+    t.string   "recordable_type", null: false
+    t.time     "start_time"
+    t.time     "end_time"
+    t.datetime "created_at"
   end
 
   create_table "songs", force: true do |t|

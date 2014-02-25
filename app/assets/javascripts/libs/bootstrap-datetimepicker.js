@@ -935,7 +935,6 @@
 
 
         tpGlobal.getTemplate = function () {
-          console.log(tpGlobal.secondTemplate);
             return (
                 '<div class="timepicker-picker">' +
                     '<table class="table-condensed">' +

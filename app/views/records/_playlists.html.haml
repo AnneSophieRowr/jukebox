@@ -1,16 +1,35 @@
-.row
-  .col-lg-9
-    %canvas#chart{:width => 450, :height => 400}
+.row.well
   .col-lg-3
-    .btn-group-vertical.stats{'data-toggle' => 'buttons'}
-      %label.btn.btn-primary.active
+    %form.simple_form.form-horizontal
+      .form-group
+        %label.col-lg-3.control-label
+          Du
+        .input-group.datetime
+          = text_field_tag :start_date, Date.today.strftime('01/01/%Y'), class: 'form-control'
+          %span.input-group-addon
+            %i.fa.fa-calendar
+  .col-lg-3
+    %form.simple_form.form-horizontal
+      .form-group
+        %label.col-lg-3.control-label
+          Au
+        .input-group.datetime
+          = text_field_tag :end_date, Date.today, class: 'form-control'
+          %span.input-group-addon
+            %i.fa.fa-calendar
+
+  .col-lg-6
+    .btn-group.stats{'data-toggle' => 'buttons'}
+      %label.btn.btn-default.active
         = radio_button_tag 'total', '', true, url: chart_data_records_path(stat: 'total', type: 'Playlist')
         Total
-      %label.btn.btn-primary
+      %label.btn.btn-default
         = radio_button_tag 'kind', '', false, url: chart_data_records_path(stat: 'kind', type: 'Playlist')
         Genre
-      %label.btn.btn-primary
+      %label.btn.btn-default
         = radio_button_tag 'time', '', false, url: chart_data_records_path(stat: 'time', type: 'Playlist')
         Temps d'écoute
-
       
+
+.row
+  %canvas#chart{:width => 450, :height => 400}

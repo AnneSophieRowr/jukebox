@@ -4,7 +4,9 @@ class RecordsController < ApplicationController
   end
   
   def chart_data
-    data = Record.send(params[:stat], params[:type])
+    start_date = Date.parse(params[:start]).strftime('%Y-%m-%d 00:00:00')
+    end_date = Date.parse(params[:end]).strftime('%Y-%m-%d 00:00:00')
+    data = Record.send(params[:stat], params[:type], start_date, end_date)
     chart_data = { 
       data: {
         labels: data.first,
@@ -25,9 +27,8 @@ class RecordsController < ApplicationController
 
   def chart_options(values)
     scale = 1 
-    steps = values.length
-    #return {scaleOverride: true, scaleSteps: steps, scaleStepWidth: scale, scaleStartValue: 1, animation: true, animationEasing: "easeOutQuart"}
-    return {animation: true, animationEasing: "easeOutQuart"}
+    steps = values.max 
+    return {scaleOverride: true, scaleSteps: steps, scaleStepWidth: scale, scaleStartValue: 1, animation: true, animationEasing: "easeOutQuart"}
   end
 
 
