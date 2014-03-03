@@ -3,7 +3,7 @@ class Record < ActiveRecord::Base
 
   def self.total(type, start_date, end_date)
     data = where('recordable_type = ? AND created_at BETWEEN ? AND ?', type, start_date, end_date).count(group: "recordable_id")
-    labels = data.keys.collect {|id| Playlist.find(id).name.capitalize}
+    labels = data.keys.collect {|id| type.constantize.find(id).name.capitalize.truncate(15, omission: '...')}
     values = data.values.collect {|v| v + 1}
     data = [labels, values]
   end

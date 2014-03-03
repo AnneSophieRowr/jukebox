@@ -11,10 +11,18 @@ $(document).ready(function(){
     endDate: Date()
   });
 
+  $('.datetime').on('change.dp', function(e) {
+    loadChart($('label.active:visible input').attr('url') + getDates());
+  });
+
+  $('#stats_tab li a').on('click', function(e) {
+    loadChart($('label.active:visible input').attr('url') + getDates());
+  });
+
   if ($("#chart").length != 0) {
     t = new Date();
     start = '&start=' + t.getFullYear()  + '-01-01';
-    end = '&end=' + t.getFullYear() + '-' + t.getMonth() + 1 + '-' + t.getDay();
+    end = '&end=' + t.getFullYear() + '-' + ("0" + (t.getMonth() + 1)).slice(-2)  + '-' + t.getDay();
     url = '/records/chart_data?stat=total&type=Playlist' + start + end;
     loadChart(url);
   }

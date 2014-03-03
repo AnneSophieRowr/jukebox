@@ -65,6 +65,9 @@ fr:
   records:
     empty: "Aucune donnée"
     listened: "Nombre d'écoutes"
+    total: "Total"
+    kind: "Genre"
+    time: "Temps d'écoute"
   parameter:
     new: "Créer un paramètre"
     create: "Le paramètre %{name} a été créé avec succès."
@@ -201,6 +204,8 @@ fr:
       all: "Tous"
       results: "R&eacute;sultat(s)"
       choose: "Choisir..."
+      start: "Du"
+      end: "Au"
     submit:
       create: "Créer"
       update: "Mettre à jour"

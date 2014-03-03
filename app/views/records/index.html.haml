@@ -1,14 +1,20 @@
 %legend
-  %h1 Statistiques
+  %h1= t('model.records')
 
 %ul#stats_tab.nav.nav-tabs
   %li.active
-    = link_to 'Playlists', '#playlists', 'data-toggle' => "tab"
+    = link_to t('model.playlists'), '#playlists', 'data-toggle' => "tab"
   %li
-    = link_to 'Titres', '#songs', 'data-toggle' => "tab"
+    = link_to t('model.songs'), '#songs', 'data-toggle' => "tab"
 
 #stats.tab-content
   #playlists.tab-pane.active.in
-    = render partial: 'playlists', locales: {records: @playlists_total}
+    .row.well
+      = dates_inputs
+      = stats_inputs('Playlist', 'total', 'kind', 'time')
   #songs.tab-pane
-    = render partial: 'songs', locales: {records: @songss_total}
+    .row.well
+      = dates_inputs
+      = stats_inputs('Song', 'total')
+
+%canvas#chart{:width => 450, :height => 400}
