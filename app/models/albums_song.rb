@@ -1,4 +1,6 @@
 class AlbumsSong < ActiveRecord::Base
+  include Synchronizable
+
   belongs_to :album
   belongs_to :song
 

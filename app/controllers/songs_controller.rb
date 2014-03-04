@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  include Concerns::Synchronize
   before_action :set_song, only: [:play, :show, :edit, :update, :destroy]
   before_action :fix_duration_params, only: [:create, :update]
 

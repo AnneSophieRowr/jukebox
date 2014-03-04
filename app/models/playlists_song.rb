@@ -1,4 +1,6 @@
 class PlaylistsSong < ActiveRecord::Base
+  include Synchronizable
+
   belongs_to :playlist
   belongs_to :song
 

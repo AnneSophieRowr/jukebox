@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+  include Concerns::Synchronize
   before_action :set_album, only: [:sort, :manage, :add_song, :show, :edit, :update, :destroy]
 
   def index

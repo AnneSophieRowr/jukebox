@@ -1,5 +1,6 @@
 class Song < ActiveRecord::Base
   include Searchable
+  include Synchronizable
 
   mount_uploader :image, ImageUploader
   mount_uploader :file, FileUploader

@@ -1,4 +1,5 @@
 class ArtistsController < ApplicationController
+  include Concerns::Synchronize
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
   def index

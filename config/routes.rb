@@ -6,15 +6,19 @@ Jukebox::Application.routes.draw do
 
   get 'search', to: 'search#search', as: :search
 
-  resources :artists, :playlists_songs, :albums_songs, :parameters, :types
-
   resources :records do
     collection do
       get :chart_data
     end
   end
 
-  resources :albums do
+  concern :synchronizable do
+    get :synchronize, on: :collection
+  end
+
+  resources :artists, :types, concerns: :synchronizable
+
+  resources :albums, concerns: :synchronizable do
     member do
       get :manage
       get :add_song
@@ -29,12 +33,12 @@ Jukebox::Application.routes.draw do
    resources :playlists
   end
 
-  resources :kinds do 
+  resources :kinds, concerns: :synchronizable do 
    resources :playlists
   end
 
 
-  resources :songs do
+  resources :songs, concerns: :synchronizable do
     resources :records
     get :play, on: :member
     collection do 
@@ -43,7 +47,7 @@ Jukebox::Application.routes.draw do
     end
   end
 
-  resources :playlists do
+  resources :playlists, concerns: :synchronizable do
     resources :records
     member do 
       get :play

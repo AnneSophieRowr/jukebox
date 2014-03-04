@@ -1,4 +1,5 @@
 class ParametersController < ApplicationController
+  include Concerns::Synchronize
   before_action :set_parameter, only: [:show, :edit, :update, :destroy]
 
   def index

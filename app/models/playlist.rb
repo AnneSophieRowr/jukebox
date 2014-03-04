@@ -1,5 +1,6 @@
 class Playlist < ActiveRecord::Base
   include Searchable
+  include Synchronizable
 
   mount_uploader :image, ImageUploader
 

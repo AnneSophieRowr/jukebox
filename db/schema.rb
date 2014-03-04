@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140225095323) do
+ActiveRecord::Schema.define(version: 20140304152600) do
 
   create_table "albums", force: true do |t|
     t.string   "name",       null: false
@@ -23,20 +23,23 @@ ActiveRecord::Schema.define(version: 20140225095323) do
   end
 
   create_table "albums_songs", force: true do |t|
-    t.integer "album_id"
-    t.integer "song_id"
-    t.integer "position"
+    t.integer  "album_id"
+    t.integer  "song_id"
+    t.integer  "position"
+    t.datetime "updated_at"
   end
 
   create_table "artists", force: true do |t|
-    t.string "name",        null: false
-    t.string "image"
-    t.text   "description"
+    t.string   "name",        null: false
+    t.string   "image"
+    t.text     "description"
+    t.datetime "updated_at"
   end
 
   create_table "artists_songs", force: true do |t|
-    t.integer "artist_id"
-    t.integer "song_id"
+    t.integer  "artist_id"
+    t.integer  "song_id"
+    t.datetime "updated_at"
   end
 
   create_table "kinds", force: true do |t|
@@ -48,8 +51,9 @@ ActiveRecord::Schema.define(version: 20140225095323) do
   end
 
   create_table "kinds_playlists", force: true do |t|
-    t.integer "kind_id"
-    t.integer "playlist_id"
+    t.integer  "kind_id"
+    t.integer  "playlist_id"
+    t.datetime "updated_at"
   end
 
   create_table "parameters", force: true do |t|
@@ -69,14 +73,16 @@ ActiveRecord::Schema.define(version: 20140225095323) do
   end
 
   create_table "playlists_songs", force: true do |t|
-    t.integer "playlist_id"
-    t.integer "song_id"
-    t.integer "position"
+    t.integer  "playlist_id"
+    t.integer  "song_id"
+    t.integer  "position"
+    t.datetime "updated_at"
   end
 
   create_table "playlists_types", force: true do |t|
-    t.integer "playlist_id"
-    t.integer "type_id"
+    t.integer  "playlist_id"
+    t.integer  "type_id"
+    t.datetime "updated_at"
   end
 
   create_table "records", force: true do |t|
@@ -99,7 +105,8 @@ ActiveRecord::Schema.define(version: 20140225095323) do
   end
 
   create_table "types", force: true do |t|
-    t.string "name", null: false
+    t.string   "name",       null: false
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

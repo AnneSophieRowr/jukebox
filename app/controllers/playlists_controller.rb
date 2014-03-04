@@ -1,4 +1,5 @@
 class PlaylistsController < ApplicationController
+  include Concerns::Synchronize
   before_action :set_playlist, only: [:add_song, :sort, :manage, :play, :show, :edit, :update, :destroy]
 
   def index
