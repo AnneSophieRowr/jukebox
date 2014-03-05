@@ -27,22 +27,34 @@ class Song < ActiveRecord::Base
   require 'zip'
   require 'mp3info'
   def self.import(tempfile, user)
+
+    File.delete('log/import.log') if File.exist?('log/import.log')
+    import_logger = Logger.new('log/import.log')
+
+    import_logger.info "########## Starting songs import ##########"
     begin
-      # Extract files
+
+      import_logger.info "Extracting Zip file..."
       Zip::File.open(tempfile) do |zipfile|
         zipfile.each do |f|
           zipfile.extract(f, "public/temp/#{f.name}") 
         end
       end
+      import_logger.info "Zip file extracted."
 
       songs = Dir.entries("public/temp/").reject! {|s| ['.', '..'].include? s or !s.include? 'mp3'}
 
-      songs.each do |song|
+      import_logger.info "Importing #{songs.size} song(s)"
+      songs.each_with_index do |song, idx|
         begin
+          import_logger.info '*'*10
+          import_logger.info "Importing song n°#{idx + 1} #{song}"
           mp3 = Mp3Info.open("public/temp/#{song}") 
 
           infos = mp3.tag.empty? ? mp3.tag1 : mp3.tag 
-          unless infos.empty?
+          if infos.empty?
+            import_logger.error "Error importing song: no mp3 infos"
+          else
             new_song = Song.new(name: infos.title.capitalize, user: user)
 
             new_song.artist = Artist.find_or_create_by(name: infos.artist.downcase)
@@ -59,17 +71,23 @@ class Song < ActiveRecord::Base
             if song_exists.empty?
               new_song.save! 
               new_song.albums << album
+              import_logger.info "Saving song: #{new_song.name}"
+            else
+              import_logger.info "Song already exists" 
             end
           end
-        rescue Exception => e
-          puts song
-          puts e.inspect
+        rescue => e
+          import_logger.error "Error importing song: #{e}"
+          next
         end
       end
-    rescue Exception => e
-      puts e
+    rescue => e
+      import_logger.error "******************* Error importing songs"
+      import_logger.error e.inspect
+      import_logger.error "***************"
     end
     FileUtils.rm_rf(Dir.glob('public/temp/*'))
+    import_logger.info "########## Finished songs import ##########"
   end
 
   end

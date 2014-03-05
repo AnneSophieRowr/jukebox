@@ -5,6 +5,7 @@ Jukebox::Application.routes.draw do
   root 'songs#index'
 
   get 'search', to: 'search#search', as: :search
+  get 'synchronize', to: 'application#synchronize', as: :synchronize
 
   resources :records do
     collection do
@@ -12,20 +13,13 @@ Jukebox::Application.routes.draw do
     end
   end
 
-  concern :synchronizable do
-    get :synchronize, on: :collection
-  end
+  resources :artists, :types, :parameters
 
-  resources :artists, :types, concerns: :synchronizable
-
-  resources :albums, concerns: :synchronizable do
+  resources :albums do
     member do
       get :manage
       get :add_song
       post :sort
-    end
-    collection do
-      post :import
     end
   end
 
@@ -33,30 +27,24 @@ Jukebox::Application.routes.draw do
    resources :playlists
   end
 
-  resources :kinds, concerns: :synchronizable do 
+  resources :kinds do 
    resources :playlists
   end
 
 
-  resources :songs, concerns: :synchronizable do
+  resources :songs do
     resources :records
     get :play, on: :member
-    collection do 
-      get :search
-      post :import
-    end
+    post :search, :import, on: :collection
   end
 
-  resources :playlists, concerns: :synchronizable do
+  resources :playlists do
     resources :records
     member do 
       get :play
       get :manage
       get :add_song
       post :sort
-    end
-    collection do
-      post :import
     end
   end
 
