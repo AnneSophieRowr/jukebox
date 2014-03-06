@@ -7,6 +7,8 @@
         %span.fa.fa-plus
       = link_to '#', :class => 'btn btn-default import_btn', title: t('song.import') do
         %span.fa.fa-download
+      = link_to import_log_path, :class => 'btn btn-default', :title => t('song.import_log') do
+        %span.fa.fa-file-text
       = form_for :import, url: import_songs_path, remote: true do |f|
         = f.file_field 'file', accept: '.zip', style: 'display:none'
 

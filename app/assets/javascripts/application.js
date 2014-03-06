@@ -23,9 +23,7 @@ $(document).ready(function(){
   });
 
   $('form').on('ajax:complete', function(evt, data) {
-    console.log(evt);
-    console.log(data);
-    //$(".partial")[0].innerHTML = data.responseText;
+    $(".partial")[0].innerHTML = data.responseText;
   });
 
 });

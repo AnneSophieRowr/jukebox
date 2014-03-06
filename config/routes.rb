@@ -6,6 +6,7 @@ Jukebox::Application.routes.draw do
 
   get 'search', to: 'search#search', as: :search
   get 'synchronize', to: 'application#synchronize', as: :synchronize
+  get 'import_log', to: 'application#import_log', as: :import_log
 
   resources :records do
     collection do

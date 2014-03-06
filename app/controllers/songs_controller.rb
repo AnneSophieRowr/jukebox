@@ -14,10 +14,7 @@ class SongsController < ApplicationController
   def import
     Song.import(params[:import][:file].tempfile, current_user)
     songs = Kaminari.paginate_array(SongDecorator.decorate_collection(Song.all)).page(params[:page])
-    respond_to do |format|
-      #format.html { render partial: 'listing', locals: {songs: songs} }
-      format.text { send_file 'log/import.log' }
-    end
+    render partial: 'listing', locals: {songs: songs} 
   end
 
   def play
