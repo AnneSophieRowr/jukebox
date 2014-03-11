@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, except: :synchronize
-  after_filter :cors_set_headers
+  after_filter :cors_set_headers, only: :synchronize
   protect_from_forgery with: :exception
 
   def current_user
