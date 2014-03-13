@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
 
   def synchronize
     date = params[:date].nil? ? Date.today.strftime('%Y-%m-%d') : params[:date]
-    puts date
     data = Synchronizer.data(date)
     render json: data.to_json
   end

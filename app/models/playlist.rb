@@ -4,9 +4,10 @@ class Playlist < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  has_and_belongs_to_many :kinds
-
   belongs_to :user
+
+  has_many :kinds_playlists
+  has_many :kinds, :through => :kinds_playlists
 
   has_many :playlists_songs, order: :position, dependent: :destroy
   has_many :songs, through: :playlists_songs

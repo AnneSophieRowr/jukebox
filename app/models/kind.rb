@@ -3,7 +3,8 @@ class Kind < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  has_and_belongs_to_many :playlists
+  has_many :kinds_playlists
+  has_many :playlists, :through => :kinds_playlists
 
   validates_presence_of :name
 end
