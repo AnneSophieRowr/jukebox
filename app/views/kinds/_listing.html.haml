@@ -13,6 +13,7 @@
       %tr
         %th= t('kind.image')
         %th= t('kind.name')
+        %th= t('kind.description')
         %th= t('kind.visible')
         %th= t('kind.playlists')
         %th
@@ -21,6 +22,7 @@
         %tr
           %td.img= image_tag kind.image_url(:thumb)
           %td= kind.name
+          %td= kind.description
           %td= kind.visible
           %td= kind.playlists.count
           %td
