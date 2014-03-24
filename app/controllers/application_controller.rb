@@ -19,14 +19,19 @@ class ApplicationController < ActionController::Base
     songs = Song.updated(date)
     artists = Artist.updated(date)
     albums = Album.updated(date)
-    input_filenames = (songs.collect {|s| s.file.url} + songs.collect {|s| s.image.url} + artists.collect {|a| a.image.url} + albums.collect {|a| a.image.url}).reject! {|f| f.include? 'default.jpg'}
-    zipfile_name = 'public/updated_files.zip'
-    Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
-      input_filenames.each do |filename|
-        zipfile.add(filename[9, filename.length], 'public' + filename)
+    input_filenames = (songs.collect {|s| s.file.url} + songs.collect {|s| s.image.url} + artists.collect {|a| a.image.url} + albums.collect {|a| a.image.url})
+    unless input_filenames.empty?
+      input_filenames = input_filenames.reject {|f| f.include? 'default'}
+      zipfile_name = 'public/updated_files.zip'
+      Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
+        input_filenames.each do |filename|
+          zipfile.add(filename[9, filename.length], 'public' + filename)
+        end
       end
+      send_file zipfile_name
+    else
+      render nothing: true
     end
-    send_file zipfile_name
   end
 
   def import_log
@@ -40,4 +45,4 @@ class ApplicationController < ActionController::Base
     response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   end
 
-end
+  end
