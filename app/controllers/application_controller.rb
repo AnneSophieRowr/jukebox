@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, except: [:synchronize, :files]
   after_filter :cors_set_headers, only: [:synchronize, :files]
   protect_from_forgery with: :exception
-  #Mime::Type.register "application/zip", :zip
 
   def current_user
     UserDecorator.decorate(super) unless super.nil?
@@ -15,13 +14,15 @@ class ApplicationController < ActionController::Base
   end
 
   def files
+    FileUtils.rm_rf(Dir.glob("public/*.zip"))
     date = params[:date].nil? ? Date.today.strftime('%Y-%m-%d') : params[:date]
-    folder = "public"
-    input_filenames = Song.updated(date).collect {|song| song.file.url}
-    zipfile_name = 'public/test.zip'
-    Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
+    songs = Song.updated(date)
+    artists = Artist.updated(date)
+    albums = Album.updated(date)
+    input_filenames = (songs.collect {|s| s.file.url} + songs.collect {|s| s.image.url} + artists.collect {|a| a.image.url} + albums.collect {|a| a.image.url}).reject! {|f| f.include? 'default.jpg'}
+    Zip::File.open('public/updated_files.zip', Zip::File::CREATE) do |zipfile|
       input_filenames.each do |filename|
-        zipfile.add(filename[1, filename.length], folder + filename)
+        zipfile.add(filename[9, filename.length], 'public' + filename)
       end
     end
     send_file zipfile_name
