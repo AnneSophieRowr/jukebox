@@ -8,14 +8,14 @@ class ApplicationController < ActionController::Base
   end
 
   def synchronize
-    date = params[:date].nil? ? Date.today.strftime('%Y-%m-%d %H:%M') : params[:date]
+    date = params[:date].nil? ? '2014-01-01 00:00:00' : params[:date]
     data = Synchronizer.data(date)
     render json: data.to_json
   end
 
   def files
     FileUtils.rm_rf(Dir.glob("public/*.zip"))
-    date = params[:date].nil? ? Date.today.strftime('%Y-%m-%d %H:%M') : params[:date]
+    date = params[:date].nil? ? '2014-01-01 00:00:00' : params[:date]
     songs = Song.updated(date)
     artists = Artist.updated(date)
     albums = Album.updated(date)
