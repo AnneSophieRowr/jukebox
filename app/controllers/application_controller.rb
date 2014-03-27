@@ -17,10 +17,9 @@ class ApplicationController < ActionController::Base
     FileUtils.rm_rf(Dir.glob("public/*.zip"))
     date = params[:date].nil? ? '2014-01-01 00:00:00' : params[:date]
     songs = Song.updated(date)
-    artists = Artist.updated(date)
-    albums = Album.updated(date)
+    playlists = Playlist.updated(date)
     kinds = Kind.updated(date)
-    input_filenames = (songs.collect {|s| s.file.url} + songs.collect {|s| s.image.url} + artists.collect {|a| a.image.url} + albums.collect {|a| a.image.url} + kinds.collect {|s| s.image.url})
+    input_filenames = (songs.collect {|s| s.file.url} + songs.collect {|s| s.image.url} + playlists.collect {|a| a.image.url} + kinds.collect {|s| s.image.url})
     unless input_filenames.empty?
       input_filenames = input_filenames.reject {|f| f.include? 'default'}
       zipfile_name = 'public/updated_files.zip'
