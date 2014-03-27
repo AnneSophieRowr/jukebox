@@ -19,7 +19,8 @@ class ApplicationController < ActionController::Base
     songs = Song.updated(date)
     artists = Artist.updated(date)
     albums = Album.updated(date)
-    input_filenames = (songs.collect {|s| s.file.url} + songs.collect {|s| s.image.url} + artists.collect {|a| a.image.url} + albums.collect {|a| a.image.url})
+    kinds = Kind.udpated(date)
+    input_filenames = (songs.collect {|s| s.file.url} + songs.collect {|s| s.image.url} + artists.collect {|a| a.image.url} + albums.collect {|a| a.image.url} + kinds.collect {|s| s.image.url})
     unless input_filenames.empty?
       input_filenames = input_filenames.reject {|f| f.include? 'default'}
       zipfile_name = 'public/updated_files.zip'
