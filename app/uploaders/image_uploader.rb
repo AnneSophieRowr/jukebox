@@ -15,8 +15,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
   
   def default_url
-    ActionController::Base.helpers.asset_path("default.jpg")
-    ActionController::Base.helpers.asset_path([version_name, "default.jpg"].compact.join('_'))
+    "default.jpg"
+    [version_name, "default.jpg"].compact.join('_')
+  #  ActionController::Base.helpers.asset_path("default.jpg")
+  #  ActionController::Base.helpers.asset_path([version_name, "default.jpg"].compact.join('_'))
   end
 
 end
