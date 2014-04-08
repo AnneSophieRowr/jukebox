@@ -31,5 +31,7 @@
         %dd= @playlist.songs.count
         %dt= t('records.listened')
         %dd= @playlist.records.count
+        %dt= t('playlist.published')
+        %dd= @playlist.published
 
 = link_to t('helpers.submit.back'), :back, :class => 'btn btn-default'

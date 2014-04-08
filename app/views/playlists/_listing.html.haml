@@ -14,6 +14,7 @@
         %th
         %th= t('playlist.name')
         %th= t('playlist.types')
+        %th= t('playlist.published')
         %th= t('playlist.songs')
         %th
     %tbody
@@ -22,6 +23,7 @@
           %td.img= image_tag playlist.image_url(:thumb)
           %td= playlist.name
           %td= playlist.types
+          %td= playlist.published
           %td= playlist.songs.size
           %td
             .row

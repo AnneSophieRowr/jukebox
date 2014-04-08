@@ -145,6 +145,7 @@ fr:
     user: "Créateur"
     image: "Vignette"
     created_at: "Date de création"
+    published: "Publiée?"
     songs: "Titre(s)"
   song:
     import: "Importer des titres"

@@ -3,7 +3,7 @@ module Synchronizable
 
   module ClassMethods
     def updated(date)
-      results = where('updated_at > ?', date)
+      results = where('updated_at > ? and published is true', date)
     end
   end 
 

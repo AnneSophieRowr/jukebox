@@ -17,6 +17,7 @@ fr:
       playlist:
         kinds: "Genre musical"
         types: "Type de playlist"
+        published: "Publiée?"
       song:
         file: "Fichier"
         album: "Album"
