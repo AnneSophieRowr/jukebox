@@ -1,6 +1,5 @@
 class Playlist < ActiveRecord::Base
   include Searchable
-  include Synchronizable
 
   mount_uploader :image, ImageUploader
 
@@ -29,6 +28,10 @@ class Playlist < ActiveRecord::Base
     details = "#{songs.count} titre(s)"
     details =  "#{p.types} - #{details}" unless p.types.empty?
     return details
+  end
+
+  def self.updated(date)
+    results = where('updated_at > ? and published is true', date)
   end
 
   require 'zip'
