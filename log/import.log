@@ -1,18 +1,9 @@
-# Logfile created on 11/03/2014 15:56 by logger.rb/36483
-I, [2014-03-11T15:56:37.587729 #8767]  INFO -- : ########## Starting songs import ##########
-I, [2014-03-11T15:56:37.587777 #8767]  INFO -- : Extracting Zip file...
-I, [2014-03-11T15:56:38.383071 #8767]  INFO -- : Zip file extracted.
-I, [2014-03-11T15:56:38.383226 #8767]  INFO -- : Importing 4 song(s)
-I, [2014-03-11T15:56:38.383260 #8767]  INFO -- : **********
-I, [2014-03-11T15:56:38.383287 #8767]  INFO -- : Importing song n°1 she_said_her_name.mp3
-E, [2014-03-11T15:56:38.383386 #8767] ERROR -- : Error importing song: empty file or IO
-I, [2014-03-11T15:56:38.383416 #8767]  INFO -- : **********
-I, [2014-03-11T15:56:38.383448 #8767]  INFO -- : Importing song n°2 Ryan-Lewis-feat.-Macklemore-Mary-Lambert-Same-Love.mp3
-I, [2014-03-11T15:56:38.449125 #8767]  INFO -- : Song already exists
-I, [2014-03-11T15:56:38.449188 #8767]  INFO -- : **********
-I, [2014-03-11T15:56:38.449215 #8767]  INFO -- : Importing song n°3 thea.mp3
-I, [2014-03-11T15:56:38.780534 #8767]  INFO -- : Song already exists
-I, [2014-03-11T15:56:38.780603 #8767]  INFO -- : **********
-I, [2014-03-11T15:56:38.780640 #8767]  INFO -- : Importing song n°4 Moriarty - Jimmy.mp3
-I, [2014-03-11T15:56:38.814805 #8767]  INFO -- : Song already exists
-I, [2014-03-11T15:56:38.815215 #8767]  INFO -- : ########## Finished songs import ##########
+# Logfile created on 09/04/2014 16:51 by logger.rb/36483
+I, [2014-04-09T16:51:21.231584 #16964]  INFO -- : ########## Starting songs import ##########
+I, [2014-04-09T16:51:21.231617 #16964]  INFO -- : Extracting Zip file...
+I, [2014-04-09T16:51:21.407435 #16964]  INFO -- : Zip file extracted.
+I, [2014-04-09T16:51:21.407566 #16964]  INFO -- : Importing 1 song(s)
+I, [2014-04-09T16:51:21.407598 #16964]  INFO -- : **********
+I, [2014-04-09T16:51:21.407622 #16964]  INFO -- : Importing song n°1 01 Farewell to pressure kids.m4a
+E, [2014-04-09T16:51:22.345598 #16964] ERROR -- : Error importing song: no mp3 infos
+I, [2014-04-09T16:51:22.346653 #16964]  INFO -- : ########## Finished songs import ##########

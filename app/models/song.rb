@@ -28,6 +28,8 @@ class Song < ActiveRecord::Base
   require 'mp3info'
   def self.import(tempfile, user)
 
+    formats = %w{mp3 mp4 m4a}
+
     File.delete('log/import.log') if File.exist?('log/import.log')
     import_logger = Logger.new('log/import.log')
 
@@ -42,7 +44,7 @@ class Song < ActiveRecord::Base
       end
       import_logger.info "Zip file extracted."
 
-      songs = Dir.entries("public/temp/").reject! {|s| ['.', '..'].include? s or !s.include? 'mp3'}
+      songs = Dir.entries("public/temp/").reject! {|s| ['.', '..'].include? s or !formats.any? {|f| s.include? f}}
 
       import_logger.info "Importing #{songs.size} song(s)"
       songs.each_with_index do |song, idx|
@@ -62,6 +64,9 @@ class Song < ActiveRecord::Base
             album = Album.find_or_create_by(name: infos.album.downcase)
           
             image = "public/temp/#{song.gsub('.mp3', '.jpg')}"
+            image = image.gsub('.mp4', '.jpg')
+            image = image.gsub('.m4a', '.jpg')
+
             new_song.image = File.exist?(image) ? File.open(image) : infos.image
 
             new_song.file = File.open("public/temp/#{song}")
