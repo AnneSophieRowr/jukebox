@@ -1,15 +1,15 @@
-# Logfile created on 10/04/2014 17:37 by logger.rb/36483
-I, [2014-04-10T17:37:40.563028 #3635]  INFO -- : ########## Starting songs import ##########
-I, [2014-04-10T17:37:40.563079 #3635]  INFO -- : Extracting Zip file...
-I, [2014-04-10T17:37:41.649151 #3635]  INFO -- : Zip file extracted.
-I, [2014-04-10T17:37:41.649289 #3635]  INFO -- : Importing 3 song(s)
-I, [2014-04-10T17:37:41.649328 #3635]  INFO -- : **********
-I, [2014-04-10T17:37:41.649355 #3635]  INFO -- : Importing song n°1 Ryan-Lewis-feat.-Macklemore-Mary-Lambert-Same-Love.mp3
-I, [2014-04-10T17:37:42.179211 #3635]  INFO -- : Saving song: Same love
-I, [2014-04-10T17:37:42.179291 #3635]  INFO -- : **********
-I, [2014-04-10T17:37:42.179325 #3635]  INFO -- : Importing song n°2 thea.mp3
-I, [2014-04-10T17:37:42.963278 #3635]  INFO -- : Saving song: Thea
-I, [2014-04-10T17:37:42.963388 #3635]  INFO -- : **********
-I, [2014-04-10T17:37:42.963440 #3635]  INFO -- : Importing song n°3 Moriarty - Jimmy.mp3
-I, [2014-04-10T17:37:43.298612 #3635]  INFO -- : Saving song: Jimmy
-I, [2014-04-10T17:37:43.299016 #3635]  INFO -- : ########## Finished songs import ##########
+# Logfile created on 10/04/2014 17:57 by logger.rb/36483
+I, [2014-04-10T17:57:55.094895 #3635]  INFO -- : ########## Starting songs import ##########
+I, [2014-04-10T17:57:55.094932 #3635]  INFO -- : Extracting Zip file...
+I, [2014-04-10T17:57:55.992343 #3635]  INFO -- : Zip file extracted.
+I, [2014-04-10T17:57:55.992494 #3635]  INFO -- : Importing 3 song(s)
+I, [2014-04-10T17:57:55.992532 #3635]  INFO -- : **********
+I, [2014-04-10T17:57:55.992559 #3635]  INFO -- : Importing song n°1 Ryan-Lewis-feat.-Macklemore-Mary-Lambert-Same-Love.mp3
+I, [2014-04-10T17:57:56.524626 #3635]  INFO -- : Saving song: Same love
+I, [2014-04-10T17:57:56.524740 #3635]  INFO -- : **********
+I, [2014-04-10T17:57:56.524797 #3635]  INFO -- : Importing song n°2 thea.mp3
+I, [2014-04-10T17:57:57.416981 #3635]  INFO -- : Saving song: Thea
+I, [2014-04-10T17:57:57.417089 #3635]  INFO -- : **********
+I, [2014-04-10T17:57:57.417143 #3635]  INFO -- : Importing song n°3 Moriarty - Jimmy.mp3
+I, [2014-04-10T17:57:57.784470 #3635]  INFO -- : Saving song: Jimmy
+I, [2014-04-10T17:57:57.785549 #3635]  INFO -- : ########## Finished songs import ##########

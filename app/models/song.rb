@@ -28,7 +28,7 @@ class Song < ActiveRecord::Base
   require 'mp3info'
   def self.import(tempfile, user)
 
-    formats = %w{mp3 mp4 m4a wav ogg flac wma}
+    format_regex = /(\.mp3|\.mp4|\.m4a|\.wav|\.ogg|\.flac|\.wma)$/ 
 
     File.delete('log/import.log') if File.exist?('log/import.log')
     import_logger = Logger.new('log/import.log')
@@ -44,7 +44,7 @@ class Song < ActiveRecord::Base
       end
       import_logger.info "Zip file extracted."
 
-      songs = Dir.entries("public/temp/").reject! {|s| ['.', '..'].include? s or !formats.any? {|f| s.include? f}}
+      songs = Dir.entries("public/temp/").reject! {|s| ['.', '..'].include? s or format_regex.match(s).nil?}
 
       import_logger.info "Importing #{songs.size} song(s)"
       songs.each_with_index do |song, idx|
