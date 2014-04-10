@@ -28,7 +28,7 @@ class Song < ActiveRecord::Base
   require 'mp3info'
   def self.import(tempfile, user)
 
-    formats = %w{mp3 mp4 m4a}
+    formats = %w{mp3 mp4 m4a wav ogg flac wma}
 
     File.delete('log/import.log') if File.exist?('log/import.log')
     import_logger = Logger.new('log/import.log')
@@ -66,8 +66,21 @@ class Song < ActiveRecord::Base
             image = "public/temp/#{song.gsub('.mp3', '.jpg')}"
             image = image.gsub('.mp4', '.jpg')
             image = image.gsub('.m4a', '.jpg')
+            image = image.gsub('.jpg', '.png') unless File.exist? image
+            image = image.gsub('.png', '.jpeg') unless File.exist? image
+            
+            image = "public/temp/#{song}"[0..-4] + 'jpg'
+            if !File.exist? image
+              image = image.gsub('.jpg', '.png')
+              if !File.exist? image
+                image = image.gsub('.png', '.jpeg')
+                if !File.exist? image
+                  image = infos.image
+                end
+              end
+            end
 
-            new_song.image = File.exist?(image) ? File.open(image) : infos.image
+            new_song.image = File.open(image)
 
             new_song.file = File.open("public/temp/#{song}")
 
