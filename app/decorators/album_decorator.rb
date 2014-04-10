@@ -2,11 +2,11 @@ class AlbumDecorator < Draper::Decorator
   delegate_all
 
   def artist
-    h.link_to object.artist.name.capitalize, h.edit_artist_path(object.artist) unless object.artist.nil?
+    h.link_to object.artist.name, h.edit_artist_path(object.artist) unless object.artist.nil?
   end
 
   def name
-    object.name.capitalize
+    object.name
   end
 
 end
