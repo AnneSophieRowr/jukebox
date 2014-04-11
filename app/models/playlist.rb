@@ -35,7 +35,7 @@ class Playlist < ActiveRecord::Base
   end
 
   require 'zip'
-  require 'mp3info'
+  #require 'mp3info'
   def self.import(tempfile, user)
     begin
       temp_path = 'public/temp'
@@ -84,7 +84,8 @@ class Playlist < ActiveRecord::Base
         playlist.image = img
 
         songs.each do |song|
-          mp3 = Mp3Info.open("#{path}songs/#{song}") 
+          #mp3 = Mp3Info.open("#{path}songs/#{song}") 
+          mp3 = ""
           infos = mp3.tag.empty? ? mp3.tag1 : mp3.tag
           unless infos.empty?
             new_song = Song.new(name: infos.title.capitalize, album: infos.album.capitalize, user: user)
