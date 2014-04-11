@@ -26,4 +26,4 @@ gem 'remotipart'
 
 gem 'acts_as_list'
 gem 'rubyzip', '>= 1.0.0'
-gem 'ruby-mp3info'
+gem 'taglib-ruby'

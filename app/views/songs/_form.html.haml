@@ -6,7 +6,7 @@
     = f.input :duration, as: :duration
     = f.association :playlists, collection: playlists, as: :with_link, input_html: { multiple: 'multiple' }
     = f.association :albums, collection: albums, as: :with_link, input_html: { multiple: 'multiple' }
-    = f.input :image
+    = f.input :image 
     = f.input :file
     = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
 

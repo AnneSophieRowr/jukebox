@@ -25,7 +25,7 @@ class Song < ActiveRecord::Base
   end
 
   require 'zip'
-  require 'mp3info'
+  require 'taglib'
   def self.import(tempfile, user)
 
     format_regex = /(\.mp3|\.mp4|\.m4a|\.wav|\.ogg|\.flac|\.wma)$/ 
@@ -51,47 +51,50 @@ class Song < ActiveRecord::Base
         begin
           import_logger.info '*'*10
           import_logger.info "Importing song n°#{idx + 1} #{song}"
-          mp3 = Mp3Info.open("public/temp/#{song}") 
 
-          infos = mp3.tag.empty? ? mp3.tag1 : mp3.tag 
-          if infos.empty?
-            import_logger.error "Error importing song: no mp3 infos"
-          else
-            new_song = Song.new(name: infos.title.capitalize, user: user)
+          TagLib::FileRef.open("public/temp/#{song}") do |mp3|
+            infos = mp3.tag
+            if infos.empty?
+              import_logger.error "Error importing song: no mp3 infos"
+            else
+              new_song = Song.new(name: infos.title.capitalize, user: user)
 
-            new_song.artist = Artist.find_or_create_by(name: infos.artist.downcase)
+              new_song.duration = mp3.audio_properties.length
 
-            album = Album.find_or_create_by(name: infos.album.downcase)
-          
-            image = "public/temp/#{song.gsub('.mp3', '.jpg')}"
-            image = image.gsub('.mp4', '.jpg')
-            image = image.gsub('.m4a', '.jpg')
-            image = image.gsub('.jpg', '.png') unless File.exist? image
-            image = image.gsub('.png', '.jpeg') unless File.exist? image
+              new_song.artist = Artist.find_or_create_by(name: infos.artist.downcase)
+
+              album = Album.find_or_create_by(name: infos.album.downcase)
             
-            image = "public/temp/#{song}"[0..-4] + 'jpg'
-            if !File.exist? image
-              image = image.gsub('.jpg', '.png')
+              image = "public/temp/#{song.gsub('.mp3', '.jpg')}"
+              image = image.gsub('.mp4', '.jpg')
+              image = image.gsub('.m4a', '.jpg')
+              image = image.gsub('.jpg', '.png') unless File.exist? image
+              image = image.gsub('.png', '.jpeg') unless File.exist? image
+              
+              image = "public/temp/#{song}"[0..-4] + 'jpg'
               if !File.exist? image
-                image = image.gsub('.png', '.jpeg')
+                image = image.gsub('.jpg', '.png')
                 if !File.exist? image
-                  image = infos.image
+                  image = image.gsub('.png', '.jpeg')
+                  if !File.exist? image
+                    image = infos.image
+                  end
                 end
               end
-            end
 
-            new_song.image = File.open(image)
+              new_song.image = File.open(image)
 
-            new_song.file = File.open("public/temp/#{song}")
+              new_song.file = File.open("public/temp/#{song}")
 
-            song_exists = Song.where(name: new_song.name)
+              song_exists = Song.where(name: new_song.name)
 
-            if song_exists.empty?
-              new_song.save! 
-              new_song.albums << album
-              import_logger.info "Saving song: #{new_song.name}"
-            else
-              import_logger.info "Song already exists" 
+              if song_exists.empty?
+                new_song.save! 
+                new_song.albums << album
+                import_logger.info "Saving song: #{new_song.name}"
+              else
+                import_logger.info "Song already exists" 
+              end
             end
           end
         rescue => e
