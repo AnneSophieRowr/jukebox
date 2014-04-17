@@ -76,13 +76,10 @@ class Song < ActiveRecord::Base
                 image = image.gsub('.jpg', '.png')
                 if !File.exist? image
                   image = image.gsub('.png', '.jpeg')
-                  if !File.exist? image
-                    image = infos.image
-                  end
                 end
               end
 
-              new_song.image = File.open(image)
+              new_song.image = File.open(image) if File.exist? image
 
               new_song.file = File.open("public/temp/#{song}")
 
