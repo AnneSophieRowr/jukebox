@@ -3,7 +3,7 @@ class PlaylistsController < ApplicationController
   before_action :set_playlist, only: [:add_song, :sort, :manage, :play, :show, :edit, :update, :destroy]
 
   def index
-    @playlists = Kaminari.paginate_array(PlaylistDecorator.decorate_collection(Playlist.all)).page(params[:page])
+    @playlists = Kaminari.paginate_array(PlaylistDecorator.decorate_collection(Playlist.all.order('name'))).page(params[:page])
   end
 
   def import

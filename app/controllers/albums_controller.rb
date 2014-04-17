@@ -3,7 +3,7 @@ class AlbumsController < ApplicationController
   before_action :set_album, only: [:sort, :manage, :add_song, :show, :edit, :update, :destroy]
 
   def index
-    @albums = Kaminari.paginate_array(AlbumDecorator.decorate_collection(Album.all)).page(params[:page])
+    @albums = Kaminari.paginate_array(AlbumDecorator.decorate_collection(Album.all.order('name'))).page(params[:page])
   end
 
   def manage

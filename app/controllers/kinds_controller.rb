@@ -3,7 +3,7 @@ class KindsController < ApplicationController
   before_action :set_kind, only: [:show, :edit, :update, :destroy]
 
   def index
-    @kinds = Kaminari.paginate_array(KindDecorator.decorate_collection(Kind.all)).page(params[:page])
+    @kinds = Kaminari.paginate_array(KindDecorator.decorate_collection(Kind.all.order('name'))).page(params[:page])
   end
 
   def new
