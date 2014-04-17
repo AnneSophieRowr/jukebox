@@ -61,9 +61,9 @@ class Song < ActiveRecord::Base
 
               new_song.duration = mp3.audio_properties.length
 
-              new_song.artist = Artist.find_or_create_by(name: infos.artist.downcase)
+              new_song.artist = Artist.find_or_create_by(name: infos.artist.downcase.capitalize)
 
-              album = Album.find_or_create_by(name: infos.album.downcase)
+              album = Album.find_or_create_by(name: infos.album.downcase.capitalize)
             
               image = "public/temp/#{song.gsub('.mp3', '.jpg')}"
               image = image.gsub('.mp4', '.jpg')
