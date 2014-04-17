@@ -1,0 +1,26 @@
+development:
+  host: hostname
+  port: 389 
+  attribute: cn
+  base: dc=myenterprise,dc=com
+  admin_user: cn=admin,dc=myenterprise,dc=com
+  admin_password: pswd
+  ssl: false
+
+test:
+  host: hostname
+  port: 389 
+  attribute: cn
+  base: dc=myenterprise,dc=com
+  admin_user: cn=admin,dc=myenterprise,dc=com
+  admin_password: pswd
+  ssl: false
+
+production:
+  host: hostname
+  port: 389 
+  attribute: cn
+  base: dc=myenterprise,dc=com
+  admin_user: cn=admin,dc=myenterprise,dc=com
+  admin_password: pswd
+  ssl: false
