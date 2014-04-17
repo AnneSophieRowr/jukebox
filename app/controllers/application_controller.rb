@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  rescue_from DeviseLdapAuthenticatable::LdapException do |exception|
+    render :text => exception, :status => 500
+  end
   before_filter :authenticate_user!, except: [:synchronize, :files]
   after_filter :cors_set_headers, only: [:synchronize, :files]
   protect_from_forgery with: :exception

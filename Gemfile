@@ -5,6 +5,8 @@ gem 'rails', '4.0.0'
 gem 'mysql2'
 
 gem 'devise'
+gem 'devise_ldap_authenticatable'
+
 gem 'thin'
 
 gem 'simple_form'

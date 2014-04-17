@@ -1,0 +1,26 @@
+development:
+  host: sdc1.bpi.fr
+  port: 389 
+  attribute: userPrincipalName
+  base: dc=bpi,dc=fr
+  admin_user: cn=adm_ldap,cn=Users,dc=bpi,dc=fr
+  admin_password: BPI2169
+  ssl: false
+
+test:
+  host: sdc1.bpi.fr
+  port: 389 
+  attribute: userPrincipalName
+  base: dc=bpi,dc=fr
+  admin_user: cn=adm_ldap,cn=Users,dc=bpi,dc=fr
+  admin_password: BPI2169
+  ssl: false
+
+production:
+  host: sdc1.bpi.fr
+  port: 389 
+  attribute: userPrincipalName
+  base: dc=bpi,dc=fr
+  admin_user: cn=adm_ldap,cn=Users,dc=bpi,dc=fr
+  admin_password: BPI2169
+  ssl: false

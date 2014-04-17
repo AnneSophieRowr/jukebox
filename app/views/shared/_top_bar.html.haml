@@ -7,7 +7,7 @@
       %form.navbar-form.navbar-left
         = text_field_tag :q, '',  class: 'form-control searchbar', placeholder: 'Recherche...'
       %ul.nav.navbar-nav.pull-right
-        %li= link_to current_user.name, edit_user_path(current_user)
+        %li= link_to current_user.name, '#'
         %li.pull-right.destroy
           = link_to destroy_user_session_path, method: :delete, alt: t('devise.logout') do
             = image_tag "exclamation.png", alt: t('devise.logout').html_safe, title: t('devise.logout'), class: :destroy

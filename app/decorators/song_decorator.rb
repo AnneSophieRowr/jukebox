@@ -14,7 +14,7 @@ class SongDecorator < Draper::Decorator
   end
 
   def user
-    h.link_to object.user.decorate.name.capitalize, h.edit_user_path(object.user) unless object.user.nil?
+    h.link_to object.user.decorate.name, h.edit_user_path(object.user) unless object.user.nil?
   end
 
   def duration

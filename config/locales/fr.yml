@@ -37,23 +37,7 @@ fr:
           attributes:
             name:
               blank: "Veuillez renseigner le nom"
-        user:
-          attributes:
-            last_name:
-              blank: "veuillez renseigner le nom de famille"
-            first_name:
-              blank: "Veuillez renseigner le prénom"
-            email:
-              taken: "Cet email est déjà pris"
-              blank: "Veuillez renseigner l'email"
-            password:
-              blank: "Veuillez renseigner le mot de passe"
-              too_short: "Le mot de passe est trop court"
-            password_confirmation:
-              blank: "Veuillez confirmer le mot de passe"
-              confirmation: "Veuillez confirmer le mot de passe"
   model:
-    users: "Utilisateur(s)"
     kinds: "Genre musicaux"
     playlists: "Playlist(s)"
     songs: "Titre(s)"
@@ -103,18 +87,6 @@ fr:
     description: "Description"
     image: "Image"
     songs: "Titre(s)"
-  user:
-    new: "Créer un utilisateur"
-    create: "L'utilisateur %{name} a été créé avec succès."
-    edit: "Mettre à jour un utilisateur"
-    update: "L'utilisateur %{name} a été mis à jour avec succès."
-    destroy: "Supprimer cet utilisteur"
-    confirm_destroy: "Etes-vous sûr de vouloir supprimer cet utilisateur?"
-    destroyed: "L'utilisateur %{name} a été supprimé avec succès."
-    empty: "Aucun utilisateur"
-    last_name: "Nom de famille"
-    first_name: "Prénom"
-    name: "Nom"
   kind:
     new: "Créer un genre musical"
     create: "Le genre musical %{name} a été créé avec succès."
