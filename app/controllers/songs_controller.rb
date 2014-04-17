@@ -4,7 +4,7 @@ class SongsController < ApplicationController
   before_action :fix_duration_params, only: [:create, :update]
 
   def index
-    @songs = Kaminari.paginate_array(SongDecorator.decorate_collection(Song.all)).page(params[:page])
+    @songs = Kaminari.paginate_array(SongDecorator.decorate_collection(Song.all.order('name'))).page(params[:page])
   end
 
   def show
