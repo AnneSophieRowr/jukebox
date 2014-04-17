@@ -11,7 +11,7 @@ class Artist < ActiveRecord::Base
   def details
     a = self.decorate
     details = "#{a.songs.count} titre(s)"
-    details = "#{a.description} - #{details}" unless description.empty?
+    details = "#{a.description} - #{details}" unless description.nil?
     return details
   end
 

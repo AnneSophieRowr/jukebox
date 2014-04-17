@@ -20,7 +20,7 @@ class Song < ActiveRecord::Base
 
   def details
     details = self.decorate.albums_view
-    details = "#{artist.decorate.name} - #{details}" unless artist.nil?
+    details = "#{artist.decorate.name} - #{details}" unless artist.nil? 
     return details
   end
 

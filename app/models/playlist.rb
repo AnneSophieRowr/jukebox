@@ -26,7 +26,7 @@ class Playlist < ActiveRecord::Base
   def details
     p = self.decorate
     details = "#{songs.count} titre(s)"
-    details =  "#{p.types} - #{details}" unless p.types.empty?
+    details =  "#{p.types_view} - #{details}" unless p.types.empty?
     return details
   end
 
