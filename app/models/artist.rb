@@ -9,10 +9,7 @@ class Artist < ActiveRecord::Base
   validates_presence_of :name
 
   def details
-    a = self.decorate
-    details = "#{a.songs.count} titre(s)"
-    details = "#{a.description} - #{details}" unless description.nil?
-    return details
+    ["#{songs.count} titre(s)", description].reject(&:blank?).join(' - ')
   end
 
 end

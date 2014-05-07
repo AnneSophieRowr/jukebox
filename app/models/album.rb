@@ -17,9 +17,7 @@ class Album < ActiveRecord::Base
   end
 
   def details
-    details = "#{songs.count} titre(s)"
-    details = "#{artist.name} - #{details}" unless artist.nil?
-    return details
+    ["#{songs.count} titre(s)", (artist.name unless artist.nil?)].reject(&:blank?).join(' - ')
   end
 
 end

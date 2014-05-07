@@ -19,9 +19,7 @@ class Song < ActiveRecord::Base
   validates_presence_of :file, :name
 
   def details
-    details = self.decorate.albums_view
-    details = "#{artist.decorate.name} - #{details}" unless artist.nil? 
-    return details
+    [decorate.albums_view, artist.name].reject(&:blank?).join(' - ')
   end
 
   require 'zip'
