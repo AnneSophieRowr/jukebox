@@ -27,7 +27,7 @@ class Playlist < ActiveRecord::Base
     p = self.decorate
     details = "#{songs.count} titre(s)"
     details =  "#{p.types_view} - #{details}" unless p.types.empty?
-    return details
+    return details.truncate(50, omission: '...')
   end
 
   def self.updated(date)

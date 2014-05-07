@@ -6,7 +6,7 @@ class PlaylistDecorator < Draper::Decorator
   end
 
   def types
-    object.types.collect {|t| h.link_to h.edit_type_path(t), t.name }.join(', ').html_safe
+    object.types.collect {|t| h.link_to t.name, h.edit_type_path(t) }.join(', ').html_safe
   end
 
   def types_view

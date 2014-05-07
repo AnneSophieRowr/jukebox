@@ -5,8 +5,4 @@ class AlbumDecorator < Draper::Decorator
     h.link_to object.artist.name, h.edit_artist_path(object.artist) unless object.artist.nil?
   end
 
-  def name
-    object.name
-  end
-
 end

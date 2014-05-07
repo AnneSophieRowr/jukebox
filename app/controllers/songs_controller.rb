@@ -80,7 +80,6 @@ class SongsController < ApplicationController
     unless params[:song][:duration].empty?
       time = Time.parse("00:#{params[:song][:duration]}")
       duration = time.min*60 + time.sec
-      puts duration
       params[:song].merge!({'duration' => duration})
     end
   end

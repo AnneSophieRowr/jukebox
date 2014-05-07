@@ -99,9 +99,9 @@ class Song < ActiveRecord::Base
           next
         end
       end
-    rescue => e
-      import_logger.error "******************* Error importing songs"
-      import_logger.error e.inspect
+    rescue Exception => e
+      import_logger.error "*************** Error importing songs"
+      import_logger.error "Trace: #{e.backtrace}"
       import_logger.error "***************"
     end
     FileUtils.rm_rf(Dir.glob('public/temp/*'))
